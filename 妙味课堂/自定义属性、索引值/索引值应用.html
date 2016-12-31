@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload =function () {
+            var aBtn = document.getElementsByTagName('input');
+            //想建立“匹配对应”关系，就用索引值
+            var arr = ['莫涛','张森','杜鹏'];
+            for(var i=0;i<aBtn.length;i++){
+                aBtn[i].index=i;   //自定义索引值
+                aBtn[i].onclick=function () {
+                    this.value = arr[this.index];
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<input type="button" value="btn1">
+<input type="button" value="btn2">
+<input type="button" value="btn3">
+</body>
+</html>

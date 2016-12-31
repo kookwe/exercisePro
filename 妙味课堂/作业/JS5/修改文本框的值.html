@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box p{
+            display: inline-block;
+        }
+        .box{
+            width: 500px;
+            height: 150px;
+        }
+        .box .title{
+            background: #6ba542;
+            color: #fff;
+            padding: 6px 30px;
+        }
+        .box .content{
+            width: 500px;
+            height: 30px;
+            border-bottom: 1px solid #ddd;
+            margin: 2px 5px;
+        }
+        .box .content .inp{
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var aBtn = document.getElementsByTagName('button');
+            var aRow = document.getElementsByClassName('row');
+            var aInp = document.getElementsByClassName('inp');
+            var save = document.getElementsByClassName('save');
+            var aInput = document.getElementsByClassName('cont');
+            var aP = document.getElementsByTagName('p');
+            for(var i=0;i<aBtn.length;i++){
+                aBtn[i].index = i;
+                aBtn[i].onclick = function () {
+                    aRow[this.index].style.display = 'none';
+                    aInp[this.index].style.display = 'block';
+                }
+            }
+            for(var i=0;i<save.length;i++){
+                save[i].index = i;
+                save[i].onclick =function () {
+                    aP[this.index].innerHTML = aInput[this.index].value;
+                    aRow[this.index].style.display = 'block';
+                    aInp[this.index].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+    <div class="title">分类名称</div>
+    <div class="content">
+        <div class="row">
+            <p>妙味实体课程</p><button>pen</button>
+        </div>
+        <div class="inp">
+            <input type="text" value="妙味实体课程" class="cont">
+            <input class="save" type="button" value="保存">
+            <span>取消</span>
+        </div>
+
+    </div>
+    <div class="content">
+        <div class="row">
+            <p>妙味实体课程</p><button>pen</button>
+        </div>
+        <div class="inp">
+            <input type="text" value="妙味实体课程" class="cont">
+            <input class="save" type="button" value="保存">
+            <span>取消</span>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

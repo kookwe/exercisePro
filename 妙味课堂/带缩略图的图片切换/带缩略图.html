@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: relative;
+            margin: 20px auto;
+            width: 400px;
+            height: 400px;
+            background: #ccc;
+        }
+        #box img{
+            width: 400px;
+            height: 400px;
+        }
+        #ul1{
+            position: absolute;
+            top: 400px;
+            left:120px;
+        }
+        #ul1 li{
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            margin: 5px;
+            border-radius: 50%;
+            background: #bbb;
+            float: left;
+        }
+        #span1{
+            display: block;
+            width: 100px;
+            height: 100px;
+            background:red;
+            position: absolute;
+            top:300px;
+            left: 100px;
+            display: none;
+        }
+        #box #span1 img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var aLi = document.getElementsByTagName('li');
+            var oImg = document.getElementsByTagName('img')[0];
+            var oSpan = document.getElementById('span1');
+            var oImg2 = oSpan.getElementsByTagName('img')[0];
+            var arr = ['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg'];
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].index = i;
+                aLi[i].onclick = function () {
+                    oImg.src = arr[this.index];
+                }
+                aLi[i].onmouseover = function () {
+                    oSpan.style.display = 'block';
+                    oImg2.src = arr[this.index];
+                }
+                aLi[i].onmouseout = function () {
+                    oSpan.style.display = 'none';
+                    oSpan.style.backgroundPosition = '300px 100px';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <img src="images/1.jpg" alt="">
+    <ul id="ul1">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span id="span1"><img src="images/1.jpg" alt=""></span>
+</div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间翻页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            position: relative;
+        }
+        li {
+            list-style: none;
+            width: 70px;
+            height: 100px;
+            float: left;
+        }
+
+        img {
+            width: 70px;
+            height: 100px;
+            vertical-align: top;
+        }
+
+        div {
+            position: absolute;
+            width: 70px;
+            height: 100px;
+            overflow: hidden;
+        }
+    </style>
+    <script src="../../../Repertory/myPr.js"></script>
+    <script>
+        window.onload = function () {
+            showTime();
+            setInterval(showTime, 1000);
+
+            function showTime() {
+                var aImg = document.getElementsByClassName('time');
+                var aDiv = document.getElementsByTagName('div');
+                var myDate = new Date();
+                var h = myDate.getHours();
+                var m = myDate.getMinutes();
+                var s = myDate.getSeconds();
+                var time = toTwo(h) + toTwo(m) + toTwo(s);
+               /* for (var i = 0; i < aImg.length; i++) {
+                    aImg[i].src = 'img/' + time[i] + '.jpg';
+                }*/
+                for (var i=0;i<aDiv.length;i++){
+
+                    startMove(aDiv[i],{top:-100});
+                }
+            }
+
+            function toTwo(n) {
+                return n < 10 ? '0' + n : '' + n;
+            }
+
+
+        }
+
+    </script>
+
+</head>
+<body>
+<ul>
+    <li>
+        <div>
+            <img src="img/1.JPG" class="time">
+            <img src="img/1.JPG" alt="">
+        </div>
+    </li>
+    <li>
+        <div>
+            <img src="img/1.JPG" class="time">
+            <img src="img/1.JPG" alt="">
+        </div>
+    </li>
+    <li>
+        <div>
+            <img src="img/colon.JPG" alt="">
+
+        </div>
+    </li>
+    <li>
+        <div>
+            <img src="img/1.JPG" class="time">
+            <img src="img/1.JPG" alt="">
+        </div>
+    </li>
+    <li>
+        <div>
+            <img src="img/1.JPG" class="time">
+            <img src="img/1.JPG" alt="">
+        </div>
+    </li>
+    <li>
+        <div>
+
+            <img src="img/colon.JPG" alt="">
+        </div>
+    </li>
+    <li>
+        <div>
+            <img src="img/1.JPG" class="time">
+            <img src="img/1.JPG" alt="">
+        </div>
+    </li>
+    <li>
+        <div>
+            <img src="img/1.JPG" class="time">
+            <img src="img/1.JPG" alt="">
+        </div>
+    </li>
+</ul>
+</body>
+</html>

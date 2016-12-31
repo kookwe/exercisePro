@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box li{
+            list-style: none;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            margin: 1px;
+            background: #eee;
+        }
+        /*#box li:hover{
+            list-style: none;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            margin: 1px;
+            background: #ccc;
+        }*/
+    </style>
+    <script>
+        window.onload = function () {
+            var oUl = document.getElementById('ul1');
+            var aLi = oUl.getElementsByTagName('li');
+            var aInp = oUl.getElementsByTagName('input');
+            /*for(var i=0;i<aLi.length;i++){
+                aLi[i].onmouseover = function () {
+                    this.style.background = '#ccc';
+                }
+                aLi[i].onmouseout = function () {
+                    this.style.background = '#eee';
+                }
+            }*/
+            for(var i=0;i<aInp.length;i++){
+                aInp[i].index = i;
+                aInp[i].onclick = function () {
+                    if(this.checked){
+                        aLi[this.index].style.background = '#ccc';
+                    }else {
+                        aLi[this.index].style.background = '#eee';
+                    }
+                }
+            }
+            /*for(var i=0;i<aLi.length;i++){
+                aLi[i].index = i;
+                aLi[i].onmouseover = function () {
+                    this.style.background = '#ccc';
+                }
+                aLi[i].onmouseout = function () {
+                    this.style.background = '#eee';
+                }
+            }*/
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <ul id="ul1">
+            <li><input type="checkbox">私奔&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp梁博<br></li>
+            <li><input type="checkbox">北京北京&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp梁博<br></li>
+            <li><input type="checkbox">我爱你中国&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp梁博<br></li>
+            <li><input type="checkbox">花火&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp梁博<br></li>
+            <li><input type="checkbox">回来&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp梁博<br></li>
+            <li><input type="checkbox">爱要有你才完美&nbsp&nbsp梁博<br></li>
+        </ul>
+        <div>
+            <input type="radio">全选
+        </div>
+    </div>
+</body>
+</html>

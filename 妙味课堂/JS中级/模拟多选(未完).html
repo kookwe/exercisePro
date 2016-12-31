@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: 1px solid #ff9f00;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            border: 1px solid #ff9f00;
+            width: 169px;
+            display: none;
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 169px;
+        }
+
+        li:hover {
+            background: #ff9f00;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oInp = document.getElementsByTagName('input')[0];
+            var oUl = document.getElementsByTagName('ul')[0];
+            var aLi = oUl.getElementsByTagName('li');
+            oInp.onfocus = function () {
+                oUl.style.display = 'block';
+            }
+
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].onclick = function (ev) {
+                    if (ev.ctrlKey == false) {
+                        oInp.value = this.innerHTML;
+                        oUl.style.display = 'none';
+                    } else {
+                        this.style.background = '#ff9f00';
+                        oInp.value += this.innerHTML + ',';
+                    }
+
+                }
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<input type="text">
+<ul>
+    <li>宋体</li>
+    <li>黑体</li>
+    <li>楷体</li>
+    <li>微软雅黑</li>
+    <li>新宋体</li>
+    <li>仿宋</li>
+</ul>
+</body>
+</html>

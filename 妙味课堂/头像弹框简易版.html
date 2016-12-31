@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #head{
+            width:50px;
+            height:50px;
+            background: red;
+            margin:20px;
+            float: left;
+            position: relative;
+        }
+        #fra{
+            width:200px;
+            height:200px;
+            background: #0f0;
+            position: absolute;
+            top:20px;
+            left:90px;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var header = document.getElementById('head');
+            var fram = document.getElementById('fra');
+            var timer = null;
+            header.onmouseover = function(){
+                clearTimeout(timer);
+                fram.style.display = 'block';
+            };
+            header.onmouseout = function(){
+                timer = setTimeout(function () {
+                    fram.style.display = 'none';
+                },2000)
+            };
+            fram.onmouseover = function(){
+                clearTimeout(timer);
+
+            }
+            fram.onmouseout = function () {
+                setTimeout(function () {
+                    fram.style.display='none';
+                },2000)
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="head"></div>
+    <div id="fra"></div>
+</body>
+</html>

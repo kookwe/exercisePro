@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            position: relative;
+            width: 237px;
+            height: 476px;
+            background: red;
+        }
+
+        .box .enter {
+            background: red;
+            border: 1px solid black;
+            width: 180px;
+            position: absolute;
+            top: 376px;
+            left: 28px;
+        }
+
+        .box .enter span {
+            background: #ccc;
+            height: 23px;
+            border: 1px solid #ccc;
+            display: block;
+            float: left;
+        }
+
+        .box .enter input {
+            width: 100px;
+            display: block;
+            float: left;
+        }
+
+        .box ul {
+            position: absolute;
+            top: 70px;
+            left: 22px;
+            width: 193px;
+            height: 305px;
+            overflow: auto;
+        }
+
+        .cont .fl img{
+            float: left;
+
+        }
+        .cont .fl p{
+            background: red;
+            float: left;
+            max-width: 140px;
+            margin-bottom: 5px;
+        }
+
+        .cont .fr img{
+            float: right;
+
+        }
+        .cont .fr p{
+            float: right;
+            background: blue;
+            max-width: 150px;
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oInp = document.getElementsByTagName('input')[0];
+            var oBut = document.getElementsByTagName('button')[0];
+            var oImg = document.getElementsByTagName('img')[0];
+            var oUl = document.getElementsByClassName('cont')[0];
+            var onOff = true;
+            oImg.onclick = function () {
+                if (onOff) {
+                    this.src = "img/2.png";
+                    onOff = false;
+                } else {
+                    this.src = "img/1.png";
+                    onOff = true;
+                }
+            }
+            oBut.onclick = function () {
+                if (onOff == true) {
+                    oUl.innerHTML = '<li class="fl"><img src="img/1.png"/><p>' + oInp.value + '</p></li>'+oUl.innerHTML;
+                } else {
+                    oUl.innerHTML = '<li class="fr"><img src="img/2.png"/><p>' + oInp.value + '</p></li>'+oUl.innerHTML;
+                }
+                oInp.value = '';
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+
+
+    <div class="enter">
+        <span><img src="img/1.png"/></span>
+        <input type="text">
+        <button type="button">发送</button>
+    </div>
+    <ul class="cont"></ul>
+    <img src="img/phone.jpg"/>
+</div>
+</body>
+</html>

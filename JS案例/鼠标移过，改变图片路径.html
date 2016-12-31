@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;
+        padding: 0;}
+        body{background: #000}
+        ul{
+            margin: 10px auto;
+            border: 10px solid #fff;
+           width: 216px;
+            height: 270px;
+        }
+        ul li{
+            list-style: none;
+            float: left;
+            border: 2px solid #fff;
+            height: 50px;
+            width: 50px;
+        }
+        .show{
+            border: 4px solid #fff;
+            height: 154px;
+            width: 154px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oLi = document.getElementsByClassName('show')[0];
+            var oImg = oLi.getElementsByTagName('img')[0];
+            var aLi = document.getElementsByTagName('li');
+            for(var i=1;i<aLi.length;i++){
+                aLi[i].index=i;
+                aLi[i].onmouseover = function () {
+                    oImg.src = 'img/big_'+this.index+'.jpg';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li class="show"><img src="img/big_1.jpg" alt=""></li>
+        <li><a href=""><img src="img/small_1.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_2.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_3.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_4.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_5.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_6.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_7.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_8.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_9.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_10.jpg" alt=""></a></li>
+        <li><a href=""><img src="img/small_11.jpg" alt=""></a></li>
+
+    </ul>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: #ddd;
+        }
+
+        .para {
+            position: relative;
+            background: white;
+            width: 400px;
+            padding: 20px;
+            margin: 20px auto;
+        }
+
+        .frame {
+            border: 10px solid #e71063;
+            width: 440px;
+            height: 150px;
+            background: #e7e7b5;
+            margin: 5px auto;
+        }
+
+        .frame-lis{
+            list-style: none;
+            position: relative;
+            width: 400px;
+            height: 40px;
+            margin: 10px 20px;
+            border-bottom: 3px solid #e73100;
+        }
+
+        .frame-lis li {
+            text-align: center;
+            float: left;
+            width: 100px;
+            height: 40px;
+            line-height: 50px;
+            color: #000;
+        }
+
+        .active {
+            background: #e73100;
+            color: #fff;
+        }
+        .search{
+            position: absolute;
+            top: 50px;
+            left: 30px;
+        }
+        .instead{
+            position: absolute;
+            top:50px;
+            left: 10px;
+        }
+        .side-box{
+            position: absolute;
+            right: -100px;
+            top:0;
+        }
+        .side-box li{list-style: none}
+        .side-box input{
+            width: 80px;
+            height: 40px;
+            background: #94948c;
+            color: #fff;
+            border: none;
+        }
+        .side-box a{
+            display: none;
+            text-decoration: none;
+            text-align: center;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            background: #94948c;
+            color: #fff;
+            margin:1px 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var aLi = document.getElementsByTagName('li');
+            var aDiv = document.getElementsByClassName('cont');
+            var side =document.getElementsByClassName('side-box')[0];
+            var btn =side.getElementsByTagName('input')[0];
+            var aa =side.getElementsByTagName('a');
+            var onOff = true;
+            btn.onclick = function () {
+                if(onOff){
+                    for(var i=0;i<aa.length;i++){
+                        aa[i].style.display = 'block';
+                    }
+                    onOff = false;
+                }else{
+                    for(var i=0;i<aa.length;i++){
+                        aa[i].style.display = 'none';
+                    }
+                    onOff = true;
+                }
+
+                for(var i=0;i<aa.length;i++){
+
+                    aa[i].onmouseover = function () {
+                        this.style.background = '#bbb';
+                    }
+                    aa[i].onmouseout = function () {
+                        this.style.background = '#94948c';
+                    }
+                    aa[i].onclick = function () {
+                        for(var j=0;j<aa.length;j++)
+                        aDiv[j].style.display = 'block';
+
+                    }
+                }
+            }
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].index=i;
+                aLi[i].onclick = function () {
+
+                    for (var j = 0; j < aLi.length; j++) {
+                        aLi[j].className = '';
+                        aDiv[j].style.display = 'none';
+                    }
+                    this.className = 'active';
+                    aDiv[this.index].style.display = 'block';
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+
+<div class="para">
+    <p>妙味课堂是一支独具特色的IT培训团队，妙味反对传统IT教育枯燥乏味的教学模式，妙味提供一种全新的快乐学习方法！<br/>
+        2013年底，妙味课堂最新推出"远程培训"服务，受到很多朋友们的喜爱与追捧，我们必将更加努力的帮助远程学习的朋友实现技术提升……</p>
+    <div class="side-box">
+        <input type="button" value="展开">
+        <a>查找</a>
+        <a>替换</a>
+    </div>
+</div>
+<div class="frame">
+    <ul class="frame-lis">
+        <li class="active">查找</li>
+        <div class="search cont">
+            <input type="text">
+            <input type="button" value="查找">
+        </div>
+
+        <li>替换</li>
+        <div class="instead cont">
+            <input type="text">
+            <input type="text">
+            <input type="button" value="替换">
+        </div>
+    </ul>
+</div>
+</body>
+</html>

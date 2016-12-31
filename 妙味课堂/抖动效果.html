@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            position: absolute;
+            top:200px;
+            left:300px;
+            width: 180px;
+        }
+    </style>
+    <script src="../Repertory/myPr.js"></script>
+    <script>
+        window.onload =function () {
+
+            var oImg = document.getElementById('img1');
+            oImg.onclick = function () {
+                Shake(oImg,'left',function () {
+                    Shake(oImg,'top');
+                })
+                /*var pos = parseInt(getStyle(oImg,'left'));
+                var arr = [];
+                var num = 0;
+                var timer = null;
+                for(var i=20;i>0;i-=2){
+                    arr.push(i,-i);
+                }
+                arr.push(0);
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    oImg.style.left = pos+arr[num]+'px';
+                    num++;
+                    if(num ==arr.length){
+                        clearInterval(timer);
+                    }
+                },50)*/
+            };
+        };
+    </script>
+</head>
+<body>
+<img src="带缩略图的图片切换/images/5.jpg" id="img1"/>
+</body>
+</html>

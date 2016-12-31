@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+        }
+        dl{
+            margin: 10px auto;
+            width: 100px;
+            border: 1px solid black;
+        }
+        dt{
+            padding: 10px 5px;
+            border-bottom: 1px solid;
+        }
+        dd{
+            padding: 10px 5px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var aInp = document.getElementsByTagName('input');
+            var oA = document.getElementsByTagName('a')[0];
+            // 全选
+            aInp[0].onclick = function () {
+                for(var i=0;i<aInp.length;i++){
+                    aInp[i].checked = true;
+                }
+            }
+            // 反选
+            oA.onclick = function () {
+                for(var i=0;i<aInp.length;i++){
+                    aInp[i].checked = !aInp[i].checked;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <dl>
+        <dt>
+            <input type="checkbox">
+            <label >全选</label>
+            <a href="javascript:;">反选</a>
+        </dt>
+        <dd>
+            <input type="checkbox">
+            <label>选项（一）</label>
+        </dd>
+        <dd>
+            <input type="checkbox">
+            <label>选项（一）</label>
+        </dd>
+        <dd>
+            <input type="checkbox">
+            <label>选项（一）</label>
+        </dd>
+        <dd>
+            <input type="checkbox">
+            <label>选项（一）</label>
+        </dd>
+        <dd>
+            <input type="checkbox">
+            <label>选项（一）</label>
+        </dd>
+        <dd>
+            <input type="checkbox">
+            <label>选项（一）</label>
+        </dd>
+    </dl>
+</body>
+</html>

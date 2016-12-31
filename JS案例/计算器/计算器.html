@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 285px;
+            border: 1px solid;
+            margin: 20px;
+            position: relative;
+           }
+        ul{
+            height: 350px;
+            background: url("bg.jpg");
+        }
+        li{
+            list-style: none;
+            float: left;
+            width: 63px;
+            height: 40px;
+            background: url("btn.png");
+            margin:10px 4px;
+        }
+        li:hover{background-position: 72px -1px;}
+        .equl{
+            height: 100px;
+            float: right;
+            background-position: 0 -163px;
+        }
+        .equl:hover{background-position: -63px -163px;}
+        .equl a{line-height: 102px;}
+        .zero{
+            width: 135px;
+            background-position: 0 -82px;
+        }
+        .zero:hover{background-position: 0 -122px}
+        a{
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            line-height: 40px;
+            text-align: center;
+        }
+        .inb{display:block;
+            margin-top: 10px;
+            background: url("inputBg.jpg") repeat-x;
+            width: 281px;
+            height: 50px;
+        }
+        .ins{
+            position: absolute;
+            top:0;
+            right: 0;
+            background: inherit;
+            border: none;
+        }
+        .func{
+            background-position:0 -40px;
+        }
+        .func:hover{
+            background-position: 72px -40px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" class="inb" readonly>
+    <input type="text" class="ins" readonly>
+    <ul>
+        <li class="func"><a href="javacript:;">CE</a></li>
+        <li class="func"><a href="javacript:;">%</a></li>
+        <li class="func"><a href="javacript:;">÷</a></li>
+        <li class="func"><a href="javacript:;">×</a></li>
+        <li><a href="javacript:;">7</a></li>
+        <li><a href="javacript:;">8</a></li>
+        <li><a href="javacript:;">9</a></li>
+        <li class="func"><a href="javacript:;">-</a></li>
+        <li><a href="javacript:;">4</a></li>
+        <li><a href="javacript:;">5</a></li>
+        <li><a href="javacript:;">6</a></li>
+        <li class="func"><a href="javacript:;">+</a></li>
+        <li><a href="javacript:;">1</a></li>
+        <li><a href="javacript:;">2</a></li>
+        <li><a href="javacript:;">3</a></li>
+        <li class="equl"><a href="javacript:;">=</a></li>
+        <li class="zero"><a href="javacript:;">0</a></li>
+        <li><a href="javacript:;">.</a></li>
+    </ul>
+
+</div>
+
+</body>
+</html>

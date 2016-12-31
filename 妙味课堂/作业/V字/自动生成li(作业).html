@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;}
+    ul,li{
+        list-style-type:none;}
+    ul{
+        position: relative;}
+        li{
+            background:red;
+            width:50px;
+            height: 50px;
+            font-size:30px;
+            text-align: center;
+            line-height:50px;
+            color: white;
+            margin:10px;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('btn1');
+            var oBtn2 = document.getElementById('btn2');
+            var oBtn3 = document.getElementById('btn3');
+            var oUl = document.getElementById('ul1');
+            var aLi = document.getElementsByTagName('li');
+            var arr = ['red','yellow','blue','green'];
+            oBtn.onclick = function () {
+                for(var i=0;i<10;i++){
+                    oUl.innerHTML += "<li>"+i+"</li>";
+                }
+                var len = aLi.length;
+                for(var i=0;i<len;i++){
+                    aLi[i].style.background = arr[i%arr.length];
+                    aLi[i].style.left = 10+i*60+"px";
+                    aLi[i].style.top= 10+i*60+"px";
+                }
+            }
+
+            oBtn2.onclick = function () {
+                for(var j=0;j<9;j++){
+                    oUl.innerHTML += "<li>"+j+"</li>";
+                }
+                var len = aLi.length;
+                for(var j=0;j<len;j++){
+                    aLi[j].style.background = arr[j%arr.length];
+                    if(j<aLi.length/2){
+                        aLi[j].style.left = 10+j*60+"px";
+                        aLi[j].style.top= 10+j*60+"px";
+                    }else{
+                        aLi[j].style.left = 10+j*60+"px";
+                        aLi[j].style.top= 10+(len-1-j)*60+"px";
+
+                    }
+
+                }
+            }
+            //如果是偶数有问题！颜色为解决
+            oBtn3.onclick = function () {
+                for(var j=0;j<11;j++){
+                    oUl.innerHTML += "<li>"+j+"</li>";
+                }
+                var len = aLi.length;
+                for(var j=0;j<len;j++){
+                    aLi[j].style.background = arr[j%arr.length];
+                    if(j<aLi.length/2){
+                        aLi[j].style.left = 10+j*60+"px";
+                        aLi[j].style.top= 10+((len-1)/2-j)*60+"px";
+                    }else{
+                        aLi[j].style.left = 10+j*60+"px";
+                        aLi[j].style.top= 10+(j-Math.floor(len/2))*60+"px";
+
+                    }
+
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input id="btn1" type="button" value="自动生成10个LI">
+<input id="btn2" type="button" value="自动生成V字形LI">
+<input id="btn3" type="button" value="自动生成倒V字形LI">
+    <ul id="ul1"></ul>
+</body>
+</html>

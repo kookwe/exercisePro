@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //影响性能
+            /*for(var i=0;i<200;i++){
+               document.body.innerHTML += "<input type='button' value='按钮'/>"
+                每次都要从body找东西，然后添加，影响加载速度
+            }*/
+            //正确写法如下
+            var str = "";
+            for(var i=0;i<3000;i++){
+                str += "<input type='button' value='按钮'/>"
+            }
+            document.body.innerHTML = str;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

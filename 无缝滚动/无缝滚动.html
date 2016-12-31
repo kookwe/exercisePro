@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: relative;
+            background: red;
+            width: 712px;
+            height: 108px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        #box ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        ul, li {
+            list-style-type: none;
+        }
+
+        li {
+            width: 178px;
+            height: 108px;
+            float: left;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            startMove();
+        }
+        var timer = null;
+
+        function startMove() {
+            var oUl = document.getElementById('content');
+            var ali = oUl.getElementsByTagName('li');
+            oUl.innerHTML += oUl.innerHTML;
+            oUl.style.width = ali[0].offsetWidth * ali.length + "px";
+            timer = setInterval(function () {
+                if (oUl.offsetLeft < -oUl.offsetWidth / 2) {
+                    oUl.style.left = 0;
+                }
+                oUl.style.left = oUl.offsetLeft - 2 + 'px';
+
+            }, 30);
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="box">
+    <ul id="content">
+        <li><img src="images/1.jpg" alt=""></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+    </ul>
+</div>
+</body>
+</html>

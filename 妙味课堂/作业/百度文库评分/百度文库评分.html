@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #commit{
+            height: 40px;
+            width: 100%;
+        }
+        #commit span{
+            float: left;
+            height: 20px;
+            display: block;
+            margin: 10px 10px;
+        }
+        ul{
+            float: left;
+            height: 20px;
+            line-height: 20px;
+            display: block;
+            margin: 10px 10px;
+        }
+        #commit li{
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: url("images/stare.png") -39px 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var comm = document.getElementById('commit');
+            var aLi = comm.getElementsByTagName('li');
+            var oText = document.getElementById('text');
+            var txt =['失望','不满','一般','满意','惊喜'];
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].index=i;
+                aLi[i].onmouseover = function () {
+                    for(var i=0;i<aLi.length;i++){
+                        if(i<=this.index)
+                        {
+                            aLi[i].style.backgroundPosition="-1px 0";
+                            oText.innerText=(this.index+1)+'分 '+txt[i];
+                        }
+                        else
+                        {
+                            aLi[i].style.backgroundPosition="-39px 0";
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="commit">
+    <span>总体评价:</span>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span id="text"></span>
+</div>
+</body>
+</html>

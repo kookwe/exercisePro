@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <script>
+        window.onload = function () {
+            var oUl = document.getElementById('list');
+            var aLi = oUl.getElementsByTagName('li');
+            var num = document.getElementsByClassName('total-num')[0];
+            var mon = document.getElementsByClassName('total-mon')[0];
+            var exp = document.getElementsByClassName('expensive')[0];
+            var aStrong = oUl.getElementsByTagName('strong');
+            var aSpan = oUl.getElementsByTagName('span');
+            var aEm = oUl.getElementsByTagName('em');
+
+
+            // fnCount ( aLi[0] );
+            for (var i = 0; i < aLi.length; i++) {
+                fnCount(aLi[i]);
+            }
+
+             function sort(a,b) {
+                 return a-b;
+             }
+
+            function showm() {
+                var str = 0;
+                var str1=0;
+                var arr =[];
+                for (var j = 0; j < aStrong.length; j++) {
+                    str += aStrong[j].innerHTML / 1;
+                    num.innerHTML = str;
+                }
+                for (var j = 0; j < aSpan.length; j++) {
+                    str1 += parseFloat(aSpan[j].innerHTML) ;
+                    arr.push(aSpan[i]);
+                    arr.sort();
+                    exp.innerHTML = aEm[]
+                    mon.innerHTML = str1;
+
+                }
+
+            }
+
+            function showm1() {
+                var str = 0;
+                var str1 = 0;
+                for (var j = 0; j < aStrong.length; j++) {
+                    str -= aStrong[j].innerHTML / 1;
+                    num.innerHTML = -str;
+                }
+                for (var j = 0; j < aSpan.length; j++) {
+                    str1 -= parseFloat(aSpan[j].innerHTML) ;
+                    mon.innerHTML = -str1;
+                }
+            }
+
+            function fnCount(li) {
+                var aBtn = li.getElementsByTagName('input');
+                var oStrong = li.getElementsByTagName('strong')[0];
+                var oEm = li.getElementsByTagName('em')[0];
+                var oSpan = li.getElementsByTagName('span')[0];
+                var n = oStrong.innerHTML;			// '0'
+                var price = parseFloat(oEm.innerHTML);			// 12.5
+
+
+                aBtn[0].onclick = function () {
+                    if (n > 0) {
+                        n--;
+                    }
+                    oStrong.innerHTML = n;
+                    oSpan.innerHTML = n * price + '元';
+                    showm1();
+                };
+                aBtn[1].onclick = function () {
+                    n++;
+                    oStrong.innerHTML = n;
+                    oSpan.innerHTML = n * price + '元';
+                    showm();
+                };
+
+            }
+
+        };
+    </script>
+</head>
+
+<body>
+
+<ul id="list">
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>12.5元</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>10.5元</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>8.5元</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>8元</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>14.5元</em>
+        小计：<span>0元</span>
+    </li>
+</ul>
+
+<p>
+    商品合计共：<span class="total-num">0</span>件<br/>
+    共花费：<span class="total-mon">0</span>元<br/>
+    其中最贵的商品单价为：<span class="expensive">0</span>元
+</p>
+
+</body>
+</html>

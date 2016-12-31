@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('btn');
+            var oUl = document.getElementById('list');
+            var arr = [
+                '常熟童工辍学调查老师家访遭学生持镰刀威胁',
+                '黑龙江七台河一煤矿发生火灾事故多人被困井下',
+                '逼停京沪高铁的济南爆炸工厂凌晨常见罐车出入',
+                '罗布泊发现50多年前地质工作者遗体 当地公安发动寻亲',
+                '多地禁酒令升级公务活动一律不准饮酒'
+            ];
+            /*
+            思路：1.先清空在生成
+                 2.判断
+            */
+            var onOff = true;
+            oBtn.onclick = function () {
+                if(onOff){
+                    for(var i=0;i<arr.length;i++ ){
+                        oUl.innerHTML+= "<li>"+arr[i]+"</li>";
+                    }
+                    onOff = false;
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+<input type="button" id="btn" value="自动生成5条新闻">
+<ul id="list">
+</ul>
+</body>
+</html>

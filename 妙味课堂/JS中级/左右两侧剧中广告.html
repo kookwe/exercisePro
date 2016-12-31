@@ -1,0 +1,38 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        #left{ width:100px;height:250px; position:absolute; left:0px; background:red; border:1px #000 solid}
+        #right{width:100px;height:250px; position:absolute; right:0px; background:blue; border:1px #000 solid}
+        #x,#y{ width:10px; height:10px;position:absolute;right:0px; top:0px;}
+    </style>
+    <script>
+        window.onload=window.onscroll=function()
+        {
+            var oLeft = document.getElementById("left");
+            var oRight = document.getElementById("right");
+            var scrollY=document.documentElement.scrollTop||document.body.scrollTop;
+            var clientH = document.documentElement.clientHeight;
+            var oCloseX =document.getElementById("x")
+            var oCloseY =document.getElementById("y")
+            oLeft.style.top=(clientH-oLeft.offsetHeight)/2+scrollY+"px";
+            oRight.style.top=(clientH-oRight.offsetHeight)/2+scrollY+"px";
+            oCloseX.onclick=function()
+            {
+                this.parentNode.parentNode.removeChild(this.parentNode);
+            }
+        }
+    </script>
+</head>
+<body style="height:2000px;">
+<div id="left">
+    <div id="x">x</div>
+</div>
+<div id="right">
+    <div id="y">x</div>
+</div>
+</body>
+</html> 

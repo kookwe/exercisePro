@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片切换</title>
+    <style>
+        #box{
+            position: relative;
+            width: 400px;
+            height: 300px;
+        }
+        #box img{
+            width: 400px;
+            height: 300px;
+        }
+        #box .number{
+            position: absolute;
+            width: 100%;
+            background: #001629;
+            color: white;
+            text-align: center;
+        }
+        #box .text{
+            position: absolute;
+            bottom:0;
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            background: #001629;
+        }
+        #side{
+            position: absolute;
+            width: 40px;
+            height: 198px;
+            background: #5c5251;
+            top:0;
+            right: -40px;
+        }
+        #side span{
+            display: block;
+            width: 34px;
+            height: 36px;
+            background: #00C378;
+            margin: 3px;
+        }
+        #side .on{
+            background: #e61061;
+        }
+        .wait{
+            background: url("images/loader_ico.gif") no-repeat center #66ffff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var side = document.getElementById('side');
+            var aSpan = side.getElementsByTagName('span');
+            var oImg = document.getElementsByTagName('img')[0];
+            var number = document.getElementsByClassName('number')[0];
+            var text = document.getElementsByClassName('text')[0];
+            var arrText = ['长江大桥','人民大礼堂','洪崖洞','朝天门','长江索道'];
+            var arrUrl = ['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg'];
+            for(var i=0;i<aSpan.length;i++){
+                aSpan[i].index = i;
+                aSpan[i].onclick = function () {
+                    //alert(arrUrl[this.index])
+                    oImg.src = arrUrl[this.index];
+                    number.innerHTML = this.index+1+'/'+arrUrl.length;
+                    text.innerHTML = arrText[this.index];
+                    for(var i=0;i<aSpan.length;i++){
+                        aSpan[i].className='';
+                    }
+                    this.className ='on';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <span class="number">图片计算中</span>
+        <img src="" class="wait">
+        <span class="text">？？？</span>
+        <div id="side">
+            <span class="on"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>
