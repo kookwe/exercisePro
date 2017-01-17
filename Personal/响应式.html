@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <script src="../Repertory/jquery-1.10.1.min.js"></script>
+    <link rel="stylesheet" href="../persongnal2/css/bootstrap.min.css">
+    <script src="../persongnal2/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-nav {
+            margin: 0 auto;
+            background: orange;
+            height: 100px;
+            width: 100%;
+        }
+
+        .top-nav li {
+            list-style: none;
+            width: 14%;
+            height: 50%;
+            margin: 25px 5%;
+            float: left;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            border: 2px solid #fff;
+        }
+
+        .top-nav li:hover {
+            border-color: #000;
+        }
+
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .content {
+            margin: 0 auto;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content li.content-frame {
+            position: absolute;
+            top: 600px;
+            left: 15%;
+            list-style: none;
+            width: 70%;
+            height: 600px;
+        }
+
+        .content li.homePage {
+            color: #fff;
+        }
+
+        .content li.homePage h1 {
+            text-align: center;
+            line-height: 300px;
+        }
+
+        .content li.homePage p {
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+            font-size: 20px;
+        }
+
+        .content li.about-me {
+            height: 600px;
+            color: #fff;
+        }
+
+        .content li.about-me h1 {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background: red;
+            text-align: center;
+            margin: 0;
+        }
+        .content li.about-me .resum{
+            margin-top:50px;
+            width: 40%;
+            position: relative;
+        }
+        .content li.about-me .resum::before {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        .content li.about-me .resum td{
+            width: 50%;
+            border: 2px solid #fff;
+            line-height: 50px;
+        }
+        .content li.about-me .resum span{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 30px;
+            text-align: center;
+
+        }
+        .content li.about-me .resum .resum-content{
+            text-align: center;
+        }
+
+        .content li.work {
+            /*background: orangered;*/
+            color: #fff;
+        }
+
+        .content li.work h1 {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background: red;
+            text-align: center;
+            margin: 0;
+        }
+
+        .content li.work .work-img {
+            width: 95%;
+            height: 80%;
+            /*background: green;*/
+            margin: 30px auto;
+        }
+
+        .content li.work .work-img li {
+            list-style: none;
+            float: left;
+            width: 33%;
+            height: 50%;
+            overflow: hidden;
+        }
+        .content li.work .work-img li::before{
+            content: "";
+            width: 50px;
+            height: 50px;
+            display: block;
+            background: red;
+        }
+        .content li.work .work-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            width: 100%;
+            height: 50px;
+            background: #1b2420;
+        }
+
+        div.header {
+            width: 100%;
+            height: 80px;
+            background: #313b35;
+            position: relative;
+            text-align: center;
+
+        }
+
+        div.header span {
+            display: inline-block;
+            height: 80px;
+            width: 100px;
+            line-height: 80px;
+            text-align: center;
+            color: #fff;
+            margin: 0 auto;
+        }
+
+        div.header a {
+            float: right;
+            line-height: 80px;
+            margin: 0 10px;
+            color: #fff;
+        }
+
+        div.background-img {
+            background: url("images/background_space1.png") no-repeat;
+            height: 700px;
+            width: 100%;
+            position: fixed;
+            z-index: -1;
+        }
+    </style>
+    <script src="js/move.js"></script>
+    <script>
+        /*问题：IE7不支持getbyclass*/
+        window.onload = function () {
+            var oNav = document.getElementsByClassName('top-nav')[0];
+            var navs = oNav.getElementsByTagName('li');
+            var oCon = document.getElementsByClassName('content')[0];
+            var aCons = oCon.getElementsByTagName('li');
+            var oldindex = 0;
+            for (var i = 0; i < navs.length; i++) {
+
+                aCons[i].name = i;
+                navs[i].index = i;
+                navs[i].onclick = function () {
+                    var that = this.index;
+                    /*一开始设置old=1，点击一次后old变为当前的index，如果下一个点击的index小于这个old，就执行
+                     *top直接变为0，如果下一个点击的index大于这个old，就startmove使得top变为0  * */
+                    if (that > oldindex) {
+                        startMove(aCons[that], 'top', 0);
+                        aCons[that].style.zIndex = '99';
+                        oldindex = that;
+                    } else if (that < oldindex) {
+                        aCons[that].style.top = '0';
+                        aCons[that].style.zIndex = '99';
+                        oldindex = that;
+                    } else {
+                        startMove(oCon, 'height', 0, function () {
+                            startMove(oCon, 'height', 608)
+                        });
+                        /*aCons[that].style.zIndex ='99';
+                         oldindex = that;*/
+                    }
+
+
+                    for (var j = 0; j < aCons.length; j++) {
+                        if (j != that) {
+                            startMove(aCons[j], 'top', 608);
+                            //aCons[j].style.top = '0';
+                        }
+                    }
+                }
+            }
+
+
+        }
+    </script>
+
+
+</head>
+<body>
+<div class="background-img"></div>
+<div class="header">
+    <span>Outline</span>
+    <a href="#javascript:;"><i class="fa fa-qq"></i></a>
+    <a href="#javascript:;"><i class="fa fa-weixin"></i></a>
+    <a href="#javascript:;"><i class="fa fa-linkedin"></i></a>
+</div>
+<ul class="top-nav">
+    <li><i class="fa fa-home"></i><a href="#javascript:;">主页</a></li>
+    <li><i class="fa fa-user"></i><a href="#javascript:;">关于我</a></li>
+    <li><i class="fa fa-image"></i><a href="#javascript:;">作品</a></li>
+    <li><i class="fa fa-envelope"></i><a href="#javascript:;">感悟</a></li>
+</ul>
+<ul class="content">
+    <li style="top:0;" class="homePage content-frame">
+        <h1>FREE Responsive Template</h1>
+        <p> Outline HTML5 Template is free responsive layout by templatemo. You can download, modify and apply this
+            layout for any of your website. Credits go to Unsplash for images.
+        </p>
+    </li>
+    <li class="about-me content-frame">
+        <h1>关于我</h1>
+        <table class="resum">
+            <tbody>
+            <tr>
+                <td><span class="fa fa-id-badge fa-2x"></span>姓名</td>
+                <td class="resum-content">张栋</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-genderless fa-2x"></span>性别</td>
+                <td class="resum-content">男</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-birthday-cake fa-2x"></span>出生年月</td>
+                <td class="resum-content">1992.9.25</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-universal-access fa-2x"></span>毕业院校</td>
+                <td class="resum-content">中国石油大学胜利学院</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-graduation-cap fa-2x"></span>本科专业</td>
+                <td class="resum-content">资源勘查工程</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-envelope-o fa-2x"></span>邮箱</td>
+                <td class="resum-content">w2287614885@163.com</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </li>
+    <li class="work content-frame">
+        <h1>练习项目</h1>
+        <ul class="work-img">
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+            <li><img src="images/5.jpg" alt=""></li>
+            <li><img src="images/6.jpg" alt=""></li>
+        </ul>
+    </li>
+    <li style="background: springgreen" class="content-frame">4</li>
+</ul>
+<div class="footer"></div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul,span,p,div{
+            padding: 0;
+            font-size: 10px;
+            margin: 0;
+        }
+        #box{
+            border: 1px solid black;
+            width: 800px;
+            margin: 10px auto;
+            height: 40px;
+        }
+        #stars{
+            display: inline-block;
+            margin: 0px 0;
+            position: relative;
+        }
+        #stars li{
+            background: url("im/star.png");
+            list-style: none;
+            float: left;
+            width: 20px;
+            height: 20px;
+            overflow: hidden;
+        }
+        #stars li .text{
+            width: 168px;
+            height: 57px;
+            padding: 5px;
+            position: absolute;
+            top:40px;
+            display: none;
+            background:  url("im/icon.gif") ;
+        }
+        #stars li .text span{
+            display: block;
+            color: orangered;
+        }
+        #box span{
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+        }
+        #stars .comment{
+            position: absolute;
+            left: 150px;
+            width: 300px;
+            display: none;
+        }
+        #stars .comment span{
+            color: orangered;
+        }
+        #stars .comment p{
+            display: inline-block;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oUl = document.getElementById('stars');
+            var aLi = document.getElementsByTagName('li');
+            var aImg = document.getElementsByTagName('img');
+            var aText = document.getElementsByClassName('text');
+
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].index = i;
+                aLi[i].onmouseover = function () {
+                    var a = this.index;
+                    for(var j=0;j<=a;j++){
+                        aLi[j].style.backgroundPosition = '0 20px';
+                    }
+                    aText[this.index].style.display = 'block';
+                    aText[this.index].style.left = -aText[this.index].offsetWidth/2+10+this.index*20+'px';
+                };
+                aLi[i].onmouseout = function () {
+                    var a = this.index;
+                    for(var j=0;j<=a;j++){
+                        aLi[j].style.backgroundPosition = '0 0';
+                    }
+                    /*this.style.backgroundPosition = '0 0';*/
+                    aText[this.index].style.display = 'none';
+                };
+                aLi[i].onclick = function () {
+                    var a = this.index;
+                    for(var j=0;j<=a;j++){
+                        aLi[j].style.backgroundPosition = '0 20px';
+                        aText[this.index].style.display = 'none';
+                    }
+                    aLi[a].onmouseout = function () {
+                        aText[a].style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <span>点击星星就能打分</span>
+    <ul id="stars">
+        <li>
+            <div class="text">
+                <span>1分 很不满意</span>
+                差得太离谱，与卖家描述的严重不符，非常不满
+            </div>
+            <div class="comment">
+                <span>1分</span>
+                <p>(差得太离谱，与卖家描述的严重不符，非常不满)</p>
+            </div>
+
+        </li>
+        <li>
+            <div class="text">
+                <span>2分 不满意</span>
+                部分有破损，与卖家描述的不符，不满意
+            </div>
+            <div class="comment">
+                <span>2分</span>
+                <p>(部分有破损，与卖家描述的不符，不满意)</p>
+            </div>
+        </li>
+        <li>
+            <div class="text">
+                <span>3分 一般</span>
+                质量一般，没有卖家描述的那么好
+            </div>
+            <div class="comment">
+                <span>3分</span>
+                <p>(质量一般，没有卖家描述的那么好)</p>
+            </div>
+        </li>
+        <li>
+            <div class="text">
+                <span>4分 满意</span>
+                质量不错，与卖家描述的基本一致，还是挺满意的
+            </div>
+            <div class="comment">
+                <span>4分</span>
+                <p>(质量不错，与卖家描述的基本一致，还是挺满意的)</p>
+            </div>
+        </li>
+        <li>
+            <div class="text">
+                <span>5分 非常满意</span>
+                质量非常好，与卖家描述的完全一致，非常满意
+            </div>
+            <div class="comment">
+                <span>5分</span>
+                <p>(质量非常好，与卖家描述的完全一致，非常满意)</p>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>

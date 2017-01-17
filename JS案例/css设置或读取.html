@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 300px;
+            margin: 10px auto;
+            height: 200px;
+            border: 1px solid red;
+            text-align: center;
+            background: orange;
+        }
+        #box input{
+            margin: 5px;
+            background: red;
+            border: none;
+            color: white;
+        }
+    </style>
+    <script>
+        function css(obj,attr,value) {
+            switch (arguments.length){
+                case 2:
+                    if(typeof arguments[1]=="object"){
+                        for(var i in attr){
+                            obj.style[i] = attr[i];
+                        }
+                    }else {
+                        return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr]
+                    }
+                    break;
+                case 3:
+                    obj.style[attr] = value;
+                    break;
+                default :
+                    alert('参数错误');
+            }
+        }
+        window.onload = function () {
+
+            var oBox = document.getElementById('box');
+            var aInp = document.getElementsByTagName('input');
+            aInp[0].onclick = function () {
+                alert(css(oBox,'width')+'\n'+css(oBox,'height')+'\n'+css(oBox,'backgroundColor'))
+            }
+            aInp[1].onclick = function () {
+                css(oBox,{
+                    width:'250px',
+                    height:'150px',
+                    backgroundColor:'green',
+                    borderColor:'blue'
+                })
+            }
+            aInp[2].onclick = function () {
+                css(oBox,{
+                    width:'300px',
+                    height:'200px',
+                    backgroundColor:'orange',
+                    borderColor:'red'
+                })
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="获取样式">
+        <input type="button" value="设置样式">
+        <input type="button" value="重置样式">
+    </div>
+</body>
+</html>

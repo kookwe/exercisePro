@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-nav {
+            margin: 0 auto;
+            background: orange;
+            height: 100px;
+            width: 100%;
+        }
+
+        .top-nav li {
+            list-style: none;
+            width: 14%;
+            height: 50%;
+            margin: 25px 5%;
+            float: left;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            border: 2px solid #fff;
+        }
+
+        .top-nav li:hover {
+            border-color: #000;
+        }
+
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .content {
+            margin: 0 auto;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content li.content-frame {
+            position: absolute;
+            top: 600px;
+            left: 15%;
+            list-style: none;
+            width: 70%;
+            height: 600px;
+        }
+        .content li.homePage{
+            color: #fff;
+        }
+        .content li.homePage h1{
+            text-align: center;
+            line-height:300px;
+        }
+        .content li.homePage p{
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
+            font-size: 20px;
+        }
+        .content li.about-me {
+            height: 596px;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        .content .about-me h1 {
+            text-align: center;
+        }
+
+        .content li.about-me::before {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .content li.work {
+            background: orangered;
+        }
+
+        .content li.work h1 {
+            text-align: center;
+        }
+
+        .content li.work .work-img {
+            width: 100%;
+            height: 100%;
+            background: green;
+
+        }
+
+        .content li.work .work-img li {
+            list-style: none;
+            float: left;
+            width: 32%;
+            height: 40%;
+            background: red;
+        }
+
+        .content li.work .work-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer {
+            width: 100%;
+            height: 50px;
+            background: #1b2420;
+        }
+
+        div.header {
+            width: 100%;
+            height: 80px;
+            background: #313b35;
+            position: relative;
+            text-align: center;
+
+        }
+
+        div.header span {
+            display: inline-block;
+            height: 80px;
+            width: 100px;
+            line-height: 80px;
+            text-align: center;
+            color: #fff;
+            margin: 0 auto;
+        }
+
+        div.header a {
+            float: right;
+            line-height: 80px;
+            margin: 0 10px;
+            color: #fff;
+        }
+
+        div.background-img {
+            background: url("images/background_space1.png") no-repeat;
+            height: 700px;
+            width: 100%;
+            position: fixed;
+            z-index: -1;
+        }
+    </style>
+    <script src="js/move.js"></script>
+    <script>
+        /*问题：IE7不支持getbyclass*/
+        window.onload = function () {
+            var oNav = document.getElementsByClassName('top-nav')[0];
+            var navs = oNav.getElementsByTagName('li');
+            var oCon = document.getElementsByClassName('content')[0];
+            var aCons = oCon.getElementsByTagName('li');
+            var oldindex = 0;
+            for (var i = 0; i < navs.length; i++) {
+
+                aCons[i].name = i;
+                navs[i].index = i;
+                navs[i].onclick = function () {
+                    var that = this.index;
+                    /*一开始设置old=1，点击一次后old变为当前的index，如果下一个点击的index小于这个old，就执行
+                     *top直接变为0，如果下一个点击的index大于这个old，就startmove使得top变为0  * */
+                    if (that > oldindex) {
+                        startMove(aCons[that], 'top', 0);
+                        aCons[that].style.zIndex = '99';
+                        oldindex = that;
+                    } else if (that < oldindex) {
+                        aCons[that].style.top = '0';
+                        aCons[that].style.zIndex = '99';
+                        oldindex = that;
+                    } else {
+                        startMove(oCon, 'height', 0, function () {
+                            startMove(oCon, 'height', 608)
+                        });
+                        /*aCons[that].style.zIndex ='99';
+                         oldindex = that;*/
+                    }
+
+
+                    for (var j = 0; j < aCons.length; j++) {
+                        if (j != that) {
+                            startMove(aCons[j], 'top', 608);
+                            //aCons[j].style.top = '0';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</head>
+<body>
+<div class="background-img"></div>
+<div class="header">
+    <span>Outline</span>
+    <a href="#javascript:;"><i class="fa fa-qq"></i></a>
+    <a href="#javascript:;"><i class="fa fa-weixin"></i></a>
+    <a href="#javascript:;"><i class="fa fa-linkedin"></i></a>
+</div>
+<ul class="top-nav">
+    <li><i class="fa fa-home"></i><a href="#javascript:;">主页</a></li>
+    <li><i class="fa fa-user"></i><a href="#javascript:;">关于我</a></li>
+    <li><i class="fa fa-image"></i><a href="#javascript:;">作品</a></li>
+    <li><i class="fa fa-envelope"></i><a href="#javascript:;">感悟</a></li>
+</ul>
+<ul class="content">
+    <li style="top:0;" class="homePage content-frame">
+        <h1>FREE Responsive Template</h1>
+        <p> Outline HTML5 Template is free responsive layout by templatemo. You can download, modify and apply this
+            layout for any of your website. Credits go to Unsplash for images.
+        </p>
+    </li>
+    <li class="about-me content-frame">
+        <h1>关于我</h1>
+
+        <p>
+            <span class="fa fa-book fa-4x"></span>
+            2001-2004
+            Far far away, behind the word mountains, far from the countries.
+        </p>
+        <p>
+            <span class="fa fa-book fa-4x"></span>
+            2004-2008
+            Far far away, behind the word mountains, far from the countries.
+        </p>
+        <p>
+            <span class="fa fa-book fa-4x"></span>
+            2008-2012
+            Far far away, behind the word mountains, far from the countries.
+        </p>
+    </li>
+    <li class="work content-frame">
+        <h1>练习项目</h1>
+        <ul class="work-img">
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/1.jpg" alt=""></li>
+        </ul>
+    </li>
+    <li style="background: springgreen" class="content-frame">4</li>
+</ul>
+<div class="footer"></div>
+</body>
+</html>

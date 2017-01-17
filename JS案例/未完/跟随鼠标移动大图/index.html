@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, ul, li,div,img {
+            margin: 0;
+            padding: 0;
+        }
+
+        #frame {
+            width: 750px;
+            height: 200px;
+            margin: 10px auto;
+        }
+
+        #frame li {
+            list-style: none;
+            float: left;
+            border: 1px solid black;
+            margin: 5px;
+            position: relative;
+        }
+
+        #frame li.active {
+            border-color: orangered;
+        }
+
+        .bigi {
+            position: absolute;
+            border: 1px solid;
+            width: 400px;
+            height: 400px;
+            display: none;
+            z-index: 20;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oUl = document.getElementById('frame');
+            var aLi = oUl.getElementsByTagName('li');
+            var aDiv = oUl.getElementsByClassName('bigi');
+            /*for(var i=0;i<aDiv.length;i++){
+                aDiv[i].style.display = 'block';
+            }*/
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].index = i;
+                aLi[i].onmouseover = function (){
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].className = '';
+                }
+                this.className = 'active';
+                    aDiv[this.index].style.display = 'block';
+                }
+                aLi[i].onmousemove = function (event) {
+                    var event = event||window.event;
+                    aDiv[this.index].style.top = event.clientY-this.offsetTop+'px';
+                    if((document.documentElement.offsetWidth-event.clientX)>aDiv[this.index].offsetWidth){
+                        aDiv[this.index].style.left = event.clientX-this.offsetLeft+'px';
+                    }else {
+
+                        aDiv[this.index].style.left = event.clientX-aDiv[this.index].offsetWidth+'px';
+                    }
+                }
+
+                aLi[i].onmouseout = function () {
+                    aDiv[this.index].style.display = 'none';
+                }
+            }
+        }
+    </script>
+    <script src="../../Repertory/getclass.js"></script>
+</head>
+<body>
+<ul id="frame">
+    <li class="active">
+        <img src="img/shirt_1.jpg" alt="">
+        <div class="bigi">
+            <img src="img/shirt_1_big.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <img src="img/shirt_2.jpg" alt="">
+        <div class="bigi">
+            <img src="img/shirt_2_big.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <img src="img/shirt_3.jpg" alt="">
+        <div class="bigi">
+            <img src="img/shirt_3_big.jpg" alt="">
+        </div>
+    </li>
+    <li>
+        <img src="img/shirt_4.jpg" alt="">
+        <div class="bigi">
+            <img src="img/shirt_4_big.jpg" alt="">
+        </div>
+    </li>
+</ul>
+</body>
+</html>

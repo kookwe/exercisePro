@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>resum</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <style>
+        body, p, ul, li ,div,img{
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            height: 52px;
+            background: #313b35;
+            z-index: 10;
+        }
+
+        #header p {
+            color: #fff;
+            line-height: 52px;
+            margin-left: 150px;
+        }
+
+        #main {
+            height: 994px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #main span {
+            position: absolute;
+            top: 200px;
+            left: 500px;
+            display: block;
+            width: 100px;
+            height: 100px;
+            background: url("images/logo.png");
+        }
+
+        #main .contain {
+            width: 900px;
+            height: 500px;
+            position: absolute;
+            top: 350px;
+            left: 150px;
+            overflow: hidden;
+        }
+
+        #main .contain li {
+            position: absolute;
+            top: 500px;
+            width: 900px;
+            height: 500px;
+            display: block;
+        }
+        #main .contain li.main-page{
+            color: #fff;
+            text-align: center;
+            top:0;
+        }
+        /*second-page*/
+        #main .contain li.second-page{
+            background: #fff;
+        }
+        #main .contain li.second-page .about-me{
+            width: 300px;
+            margin: 70px;
+            float: left;
+        }
+        #main .contain li.second-page .background{
+            width: 300px;
+            margin: 70px;
+            float: left;
+        }
+        /*end*/
+        /*third-page*/
+        #main .contain li.third-page{
+            background: #fff;
+        }
+        #main .contain li.third-page .third-page-box{
+            margin: 0 auto;
+            width: 95%;
+            height: 95%;
+        }
+        #main .contain li.third-page .third-page-box div{
+            margin: 15px;
+            float: left;
+        }
+        #main .contain li.third-page img{
+            width: 250px;
+            height: 150px;
+        }
+        /*end*/
+        /*forth-page*/
+        #main .contain li.forth-page{
+            background: #fff;
+        }
+        #main .contain li.forth-page .email{
+            margin: 30px ;
+            float: left;
+            width: 500px;
+            height: 400px;
+            background: red;
+        }
+        #main .contain li.forth-page .touch{
+            margin: 30px 0 0 0;
+            float: left;
+            width: 300px;
+            height: 300px;
+            background: green;
+        }
+
+        /*end*/
+        #main .slide {
+            position: absolute;
+            right: 50px;
+            margin-top: 50px;
+        }
+        #main .slide a{
+            display: block;
+            text-decoration: none;
+            width: 150px;
+            height: 150px;
+            color: #fff;
+            text-align: center;
+        }
+        #main .slide a i{
+            display: block;
+            text-align: center;
+            line-height: 100px;
+        }
+        #main .slide li {
+            list-style: none;
+            width: 150px;
+            height: 150px;
+            background: red;
+            margin: 20px;
+        }
+        #main .slide li.home-btn{
+            background: #207d59;
+        }
+        #main .slide li.about-btn{
+            background: #3b5b8e;
+        }
+        #main .slide li.project-btn{
+            background: #5c9faf;
+        }
+        #main .slide li.contact-btn{
+            background: #b85b53;
+        }
+        #footer {
+            height: 52px;
+            background: #313b35;
+        }
+
+        #bg-img {
+            width: 100%;
+            height: 100%;
+            background: url("images/bg.jpg");
+            background-size: cover;
+            position: fixed;
+            z-index: -1;
+        }
+    </style>
+    <script src="../Repertory/move.js"></script>
+    <script src="../Repertory/getclass.js"></script>
+    <script src="../Repertory/逐渐显示.js"></script>
+    <script>
+        window.onload = function () {
+            var oMain = document.getElementById('main');
+            var aCon = get.byClass('contain', oMain)[0];
+            var aCli = aCon.getElementsByTagName('li');
+            var oSlide = get.byClass('slide', oMain)[0];
+            var aA = oSlide.getElementsByTagName('a');
+            var oSpan = get.byClass('head-img', oMain)[0];
+
+
+            for (var i = 1; i < aA.length; i++) {
+            aA[i].index = i;
+            aA[i].onOff = true;
+            aA[i].onOff = true;
+
+
+
+            aA[i].onclick = function () {
+                var that = this.index;
+                /*第一个按钮 主页*/
+                aA[0].onclick = function () {
+                    if(aCon.style.top ==200+'px'){
+
+                        startMove(aCli[that],'top',-500,function () {
+                            startMove(aCon,'top',350);
+                        });
+                        startMove(oSpan,'left',500,function () {
+                            startMove(oSpan,'top',200);
+                        });
+
+                    }else {
+                        startMove(aCli[0],'top',-500,function () {
+                            startMove(aCli[0],'top',0)
+                        })
+                    }
+                }
+                /*其余按钮*/
+                if(aCon.style.top !=200+'px'){
+                    startMove(aCon,'top',200);
+                    startMove(aCli[that],'top',0)
+                    startMove(oSpan,'top',70,function () {
+                        startMove(oSpan,'left',150)
+                    });
+                }else {
+                    /*show(aCli[that],500);*/
+
+                    startMove(aCli[that],'height',0,function () {
+                        startMove(aCli[that],'height',500)
+                    })
+                }
+
+            }
+        }
+        }
+
+    </script>
+
+
+</head>
+<body>
+<div id="bg-img"></div>
+
+<div id="header">
+    <p>电话：12334543456</p>
+</div>
+<div id="main">
+
+    <span class="head-img"></span>
+
+    <ul class="contain">
+        <li  class="main-page">
+            <h1>Hello, Welcome to RECTANGLE</h1>
+            <p>
+                Rectangle is free mobile template brought to you by templatemo.com website. You can download, edit and use this layout for any purpose. Please tell your friends about our website. Thank you.
+            </p>
+        </li>
+        <li class="second-page">
+            <div class="about-me">
+                <h2>Learn about us</h2>
+                <h3>Linda Beauty</h3>
+                <p>
+                    Creative Director
+                    Most of the images are from Unsplash.com website. Curabitur auctor justo pretium purus varius sagittis. Aliquam porttitor leo sapien, hendrerit dapibus lorem.
+                </p>
+            </div>
+            <div class="background">
+                <h2>Background</h2>
+                <p>
+                    Vestibulum pellentesque ante sit amet tristique hendrerit. Sed consequat, nunc lobortis faucibus pretium, enim nibh blandit est, nec sollicitudin est quam a neque. Aenean eget malesuada justo.
+                </p>
+            </div>
+        </li>
+        <li class="third-page">
+            <div class="third-page-box">
+                <h1>我的项目</h1>
+                <div><img src="images/1.jpg" ></div>
+                <div><img src="images/2.jpg" ></div>
+                <div><img src="images/3.jpg" ></div>
+                <div><img src="images/4.jpg" ></div>
+                <div><img src="images/5.jpg" ></div>
+                <div><img src="images/6.jpg" ></div>
+            </div>
+
+        </li>
+        <li class="forth-page">
+            <div class="email"></div>
+            <div class="touch">
+                <h3>Stay In Touch</h3>
+                <p>
+                Sed ullamcorper, risus a tincidunt efficitur, massa mauris ultricies leo, eu interdum eros erat non augue.
+                Suspendisse ornare sollicitudin lectus non egestas. Nam fermentum imperdiet ligula congue venenatis.
+                </p>
+            </div>
+        </li>
+    </ul>
+    <ul class="slide">
+        <li class="home-btn"><a href="javascript:;"><i class="fa fa-home fa-4x"></i>Home</a></li>
+        <li class="about-btn"><a href="javascript:;"><i class="fa fa-user fa-4x"></i>About Me</a></li>
+        <li class="project-btn"><a href="javascript:;"><i class="fa fa-camera fa-4x"></i>Project</a></li>
+        <li class="contact-btn"><a href="javascript:;"><i class="fa fa-envelope fa-4x"></i>Contact me</a></li>
+    </ul>
+</div>
+<div id="footer">
+
+</div>
+
+</body>
+</html>

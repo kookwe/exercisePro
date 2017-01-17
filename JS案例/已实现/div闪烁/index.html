@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            text-align: center;
+            line-height: 200px;
+            color: #fff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementsByTagName('div')[0];
+
+            var timer = null;
+            oDiv.onclick = function () {
+                var i=0;
+                clearInterval(timer);
+               timer=setInterval(function () {
+                   i++;
+                      if(i%2==0){
+                          oDiv.style.display = 'none';
+                      }else{
+                          oDiv.style.display = 'block';
+                      }
+                   if(i==7){
+                       clearInterval(timer);
+                   }
+               },100);
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>点我！</div>
+</body>
+</html>

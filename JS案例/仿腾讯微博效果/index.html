@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 500px;
+            height: 400px;
+            background: #fff;
+            border: 1px solid black;
+        }
+        #box #header{
+            width: 450px;
+            height: 200px;
+            margin: 10px auto;
+            position: relative;
+        }
+        #box .bg{
+            width: 500px;
+            height: 220px;
+            background: #f7f7f7;
+            position: absolute;
+        }
+        #header .head-inp1{
+            background: url("images/inputBG.png") repeat-x;
+            border: 1px solid #ccc;
+            height: 28px;
+            float: left;
+            margin-left: -10px;
+        }
+        #header .head-inp2{
+            background: url("images/inputBG.png") repeat-x;
+            border: 1px solid #ccc;
+            width: 446px;
+            height: 80px;
+            min-height:80px;
+        }
+        #header .head-btn{
+            float: right;
+            width: 113px;
+            height: 30px;
+            background: url("images/btn-weibo.png") no-repeat;
+            border: none;
+            outline: none;
+        }
+        #header .head-btn:hover{
+            background-position: 0 -30px;
+        }
+        #header span{
+            color: #ccc;
+            position: absolute;
+            right: 150px;
+        }
+        #header .choose-head{
+            margin: 10px;
+            height: 30px;
+        }
+        #header ul{
+                float: left;
+        }
+        #header li{
+            list-style: none;
+            float: left;
+            margin: 0 2px;
+            opacity: 0.5;
+            filter: alpha(opacity:50);
+            border: 1px solid #fff;
+            width: 30px;
+            height: 30px;
+        }
+        #header li:hover{
+            opacity: 1;
+            filter: alpha(opacity:100);
+            border: 1px solid orangered;
+        }
+        #header li.active{
+            opacity: 1;
+            filter: alpha(opacity:100);
+            border: 1px solid orangered;
+        }
+        #header li img{
+            width: 30px;
+            height: 30px;
+        }
+        #footer{
+            margin-top: 20px;
+        }
+        #footer .foot-head{
+            width: 96%;
+            height: 40px;
+            background: #e3eaec;
+            position: relative;
+            margin: 0 auto;
+        }
+        #footer .foot-head span{
+            padding: 5px 15px;
+            background: #fff;
+            position: absolute;
+            top:9px;
+            left: 10px;
+        }
+        #footer .foot-content{
+            width: 96%;
+            margin: 0 auto;
+            position: relative;
+        }
+        #footer .foot-content li{
+            min-height: 70px;
+            list-style: none;
+            border-bottom: 1px dashed #e3eaec;
+        }
+        #footer .foot-content li:hover{
+            background: #f7f7f7;
+        }
+        #footer .foot-content img{
+            margin: 10px;
+            float: left;
+        }
+        #footer .foot-content .comment{
+            float: left;
+            width: 400px;
+            font-size: 14px;
+            margin-left: 10px;
+            font-family: arial;
+            word-wrap: break-word;
+        }
+        #footer .foot-content .username{
+            padding-right: 5px;
+            display: inline;
+        }
+        #footer .foot-content .username a{
+            text-decoration: none;
+        }
+        #footer .foot-content .info{
+            display: inline;
+            word-wrap: break-word;
+        }
+        #footer .foot-content .time{
+            color: #889db6;
+            font: 12px/18px arial;
+            margin-top: 5px;
+            overflow: hidden;
+            zoom: 1;
+        }
+        #footer .foot-content span{
+            float: left;
+        }
+        #footer .foot-content .delete{
+            text-decoration: none;
+            float: right;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oHead = document.getElementById('header');
+            var aHli = oHead.getElementsByTagName('li');
+            var oBtn = document.getElementsByClassName('head-btn')[0];
+            var oUl = document.getElementsByClassName('foot-content')[0];
+            var oInp1 = document.getElementsByClassName('head-inp1')[0];
+            var oInp2 = document.getElementsByClassName('head-inp2')[0];
+
+            oBtn.onclick = function () {
+                var oComment = document.createElement('li');
+                oComment.innerHTML ='<img src="images/face1.gif" alt="">'+
+                    '<div class="comment">'+
+                    '<div class="username">'+
+                    '<a href="" >'+oInp1.value+'</a>:</div>'+
+                '<div class="info">'+oInp2.value+
+                '</div><div class="time">'+
+                '<span>01月</span>'+
+                '<a href="" class="delete">删除</a>'+
+                    '</div></div>'
+
+                if(oUl.children[0]){
+                    oUl.insertBefore(oComment,oUl.children[0]);
+                }else{
+                    oUl.appendChild(oComment);
+                }
+            }
+
+            for(var i=0;i<aHli.length;i++){
+                aHli[i].onclick = function () {
+                    for(var j=0;j<aHli.length;j++){
+                        aHli[j].className = 'none';
+                    }
+                    this.className = 'active';
+                    this.onmouseover =this.onmouseout =null;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div class="bg"></div>
+        <div id="header">
+            <h3>来，说说你在做什么，想什么</h3>
+            <div class="choose-head">
+                <input type="text" class="head-inp1">
+                <ul>
+                    <li class="active"><img src="images/face1.gif" alt=""></li>
+                    <li><img src="images/face2.gif" alt=""></li>
+                    <li><img src="images/face3.gif" alt=""></li>
+                    <li><img src="images/face4.gif" alt=""></li>
+                </ul>
+            </div>
+
+            <input type="text" class="head-inp2">
+            <span>还能输入<strong>140</strong>个字</span>
+            <input type="button"  class="head-btn">
+        </div>
+        <div id="footer">
+            <div class="foot-head"><span>大家在说</span></div>
+            <ul class="foot-content">
+                <li>
+                    <img src="images/face1.gif" alt="">
+                    <div class="comment">
+                        <div class="username">
+                            <a href="" >日久生情</a>：
+                        </div>
+                        <div class="info">
+                            阿达大是大非哇公司的
+                        </div>
+                        <div class="time">
+                            <span>01月</span>
+                            <a href="" class="delete">删除</a>
+                        </div>
+                    </div>
+
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

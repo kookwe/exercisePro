@@ -17,9 +17,6 @@
             border: 1px solid #333;
             margin: 0 auto;
         }
-        #list .lis{
-
-        }
         #list h2{
             height: 30px;
             line-height: 30px;
@@ -41,13 +38,17 @@
         }
         #list ul .hover{background: #60f;}
     </style>
-    <script>
+    <script src="../../Repertory/jquery-1.10.1.min.js"></script>
+   <script>
         window.onload = function () {
-            var oUl = document.getElementById('list');
-            var aH2 = oUl.getElementsByTagName('h2');
-            var aUl = oUl.getElementsByTagName('ul');
-            var aLi = null;
-            var arrLi = [];
+            //var oUl = document.getElementById('list');
+            var oUL = $('#list');
+            //var aH2 = oUl.getElementsByTagName('h2');
+            var h2 = oUL.find('h2');
+            //var aUl = oUl.getElementsByTagName('ul');
+            var aUL = oUL.find('ul');
+           /* var aLi = null;
+            var arrLi = [];*/
             for(var i=0;i<aH2.length;i++){
                 aH2[i].index = i;
                 aH2[i].onclick = function () {
@@ -90,6 +91,29 @@
             }
         };
     </script>
+    
+    <!--jq版-->
+
+    <!--<script>
+        $(function () {
+            var onOff = true;
+            if(onOff){
+                $('.lis').find('h2').click(function () {
+
+                    $('.lis').find('ul').eq($(this).index()).css('display','block');
+                    onOff =false
+                })
+            }else {
+                $('.lis').find('h2').click(function () {
+
+                    $('.lis').find('ul').eq($(this).index()).css('display','none');
+                    onOff =true;
+                })
+            }
+
+        })
+    </script>-->
+
 </head>
 <body>
     <ul id="list">

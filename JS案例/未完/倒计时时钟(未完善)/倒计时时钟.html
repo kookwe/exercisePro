@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            margin: 10px auto;
+            position: relative;
+            border: 1px solid;
+            width: 290px;
+            height: 150px;
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            line-height: 7;
+        }
+        span{
+            padding: 10px 20px;
+            background: #fff;
+            border: 1px solid red;
+            margin: 5px;
+            color: black;
+        }
+        input{
+            display: block;
+            background: url("btn-1.png");
+            width: 281px;
+            height: 50px;
+            position: absolute;
+            top:80px;
+            border: none;
+            margin: 10px 3px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementsByTagName('input')[0];
+            var aSpan = document.getElementsByTagName('span');
+            var onOff = true;
+            var timer = null;
+                oBtn.onclick = function () {
+                    if(onOff){
+                        this.style.backgroundPosition = 'bottom';
+                        onOff = false;
+                        start();
+                    }else {
+                        this.style.backgroundPosition = 'top';
+                        onOff=true;
+                        stop();
+                    }
+
+
+                }
+
+            function start() {
+                clearInterval(timer);
+                timer=setInterval(function () {
+                    if (aSpan[1].innerHTML==0){
+                        aSpan[1].innerHTML = 60;
+                        aSpan[0].innerHTML--;
+                    }else {
+                        aSpan[1].innerHTML--;
+                    }
+                    if(aSpan[0].innerHTML<0){
+                        clearInterval(timer);
+                        aSpan[0].innerHTML = 0;
+                        aSpan[1].innerHTML = 0;
+                    }
+                },1000);
+            }
+            function stop() {
+                    clearInterval(timer);
+                timer =null;
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <span>1</span>分钟<span>2</span>秒
+        <input type="button">
+    </div>
+</body>
+</html>

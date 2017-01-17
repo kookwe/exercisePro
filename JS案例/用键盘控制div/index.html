@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementsByTagName('div')[0];
+            document.onkeydown = function (ev) {
+                var ev = ev || window.ev;
+                switch (ev.keyCode) {
+                    case 38:
+                        if (ev.ctrlKey == true) {
+                            oDiv.style.width = oDiv.offsetWidth * 1.5 + 'px';
+                            oDiv.style.height = oDiv.offsetHeight * 1.5 + 'px';
+                            break;
+                        }
+                        oDiv.style.top = oDiv.offsetTop - 10 + 'px';
+                        break;
+                    case 37:
+                        oDiv.style.left = oDiv.offsetLeft - 10 + 'px';
+                        break;
+                    case 40:
+                        if (ev.ctrlKey == true) {
+                            oDiv.style.width = oDiv.offsetWidth / 1.5 + 'px';
+                            oDiv.style.height = oDiv.offsetHeight / 1.5 + 'px';
+                            break;
+                        }
+                        oDiv.style.top = oDiv.offsetTop + 10 + 'px';
+                        break;
+                    case 39:
+                        oDiv.style.left = oDiv.offsetLeft + 10 + 'px';
+                        break
+                    case 49:
+                        if (ev.ctrlKey == true) {
+                            oDiv.style.background = 'green';
+                            break;
+                        }
+                        break;
+                    case 50:
+                        if (ev.ctrlKey == true) {
+                            oDiv.style.background = 'yellow';
+                            break;
+                        }
+                        break;
+                    case 51:
+                        if (ev.ctrlKey == true) {
+                            oDiv.style.background = 'blue';
+                            break;
+                        }
+                        break;
+                }
+                lim();
+                return false;
+        }
+        document.onkeyup = function (ev) {
+                var ev = ev||window.ev;
+            switch (ev.keyCode) {
+                case 38:
+                    if (ev.ctrlKey == true) {
+                        oDiv.style.width = oDiv.offsetWidth +'px';
+                        oDiv.style.height = oDiv.offsetHeight  + 'px';
+                        break;
+                    }
+                    oDiv.style.top = oDiv.offsetTop+ 'px';
+                    break;
+                case 37:
+                    oDiv.style.left = oDiv.offsetLeft + 'px';
+                    break;
+                case 40:
+                    if (ev.ctrlKey == true) {
+                        oDiv.style.width = oDiv.offsetWidth  + 'px';
+                        oDiv.style.height = oDiv.offsetHeight  + 'px';
+                        break;
+                    }
+                    oDiv.style.top = oDiv.offsetTop  + 'px';
+                    break;
+                case 39:
+                    oDiv.style.left = oDiv.offsetLeft  + 'px';
+                    break
+
+            }
+            lim();
+        }
+            function lim() {
+                var cW = document.documentElement.clientWidth;
+                var cH = document.documentElement.clientHeight;
+
+                if(oDiv.offsetLeft<0){
+                    oDiv.style.left = 0;
+                }else if(oDiv.offsetTop<0){
+                    oDiv.style.top = 0;
+                }
+                if(cW-oDiv.offsetWidth<=oDiv.offsetLeft){
+                    oDiv.style.left = cW-oDiv.offsetWidth+'px';
+                }
+
+                if(cH-oDiv.offsetTop-oDiv.offsetHeight<=0){
+                    oDiv.style.top = cH-oDiv.offsetHeight+'px';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div></div>
+</body>
+</html>
