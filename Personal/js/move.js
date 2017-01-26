@@ -19,7 +19,7 @@ function startMove(obj,attr,iTarget,fn){
 					icur=parseInt(getStyle(obj, attr));
 				}
 				//2.算速度
-				var speed = (iTarget-icur)/2;
+				var speed = (iTarget-icur)/4;
 				speed = speed>0?Math.ceil(speed):Math.floor(speed);
 				//3.检测停止
 				if(icur==iTarget){

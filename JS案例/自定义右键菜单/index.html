@@ -3,15 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .top-nav{
+            margin: 10px auto;
+            background: red;
+            height: 50px;
+            width: 1100px;
+        }
+        .top-nav li{
+            list-style: none;
+            width:200px;
+            height: 50px;
+            margin:0 30px;
+            background: green;
+            float: left;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+        .content{
+            margin: 10px auto;
+            width: 800px;
+            height: 500px;
+            background: blue;
+            overflow: hidden;
+            position: relative;
+        }
+        .content li{
+            position: absolute;
+            top:500px;
+            list-style: none;
+            width: 800px;
+            height: 500px;
+        }
+        .footer{
+            width: 100%;
+            height: 50px;
+            background: black;
+        }
+    </style>
+    <script src="../../Personal/js/move.js"></script>
+    <script>
+        window.onload = function () {
+            var oNav =document.getElementsByClassName('top-nav')[0];
+            var navs = oNav.getElementsByTagName('li');
+            var oCon = document.getElementsByClassName('content')[0];
+            var aCons = oCon.getElementsByTagName('li');
+            var oldindex = 0;
+            for(var i=0;i<navs.length;i++){
+
+                aCons[i].name = i;
+                navs[i].index = i;
+                navs[i].onclick = function () {
+                    var that = this.index;
+                    /*一开始设置old=1，点击一次后old变为当前的index，如果下一个点击的index小于这个old，就执行
+                     *top直接变为0，如果下一个点击的index大于这个old，就startmove使得top变为0  * */
+                    if(that>oldindex){
+                        startMove(aCons[that],'top',0);
+                        aCons[that].style.zIndex ='99';
+                        oldindex = that;
+                    }else if(that<oldindex){
+                        aCons[that].style.top = '0';
+                        aCons[that].style.zIndex ='99';
+                        oldindex = that;
+                    }else {
+                        startMove(oCon,'height',0,function () {
+                            startMove(oCon,'height',500)
+                        });
+                        /*aCons[that].style.zIndex ='99';
+                         oldindex = that;*/
+                    }
+
+
+
+                    for(var j=0;j<aCons.length;j++){
+                        if(j!=that){
+                            startMove(aCons[j],'top',500);
+                            //aCons[j].style.top = '0';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+
 </head>
 <body>
-    <div>
-        <ul>
-            <li>javascript学习</li>
-            <li>第一课</li>
-            <li>第二课</li>
-            <li>第三课</li>
+<ul class="top-nav">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<ul class="content">
+    <li style="top:0;" class="homePage content-frame">
+        <h1>FREE Responsive Template</h1>
+        <p> Outline HTML5 Template is free responsive layout by templatemo. You can download, modify and apply this
+            layout for any of your website. Credits go to Unsplash for images.
+        </p>
+    </li>
+    <li class="about-me content-frame">
+        <h1>关于我</h1>
+        <table class="resum">
+            <tbody>
+            <tr>
+                <td><span class="fa fa-id-badge fa-2x"></span>姓名</td>
+                <td class="resum-content">张栋</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-genderless fa-2x"></span>性别</td>
+                <td class="resum-content">男</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-birthday-cake fa-2x"></span>出生年月</td>
+                <td class="resum-content">1992.9.25</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-universal-access fa-2x"></span>毕业院校</td>
+                <td class="resum-content">中国石油大学胜利学院</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-graduation-cap fa-2x"></span>本科专业</td>
+                <td class="resum-content">资源勘查工程</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-envelope-o fa-2x"></span>邮箱</td>
+                <td class="resum-content">w2287614885@163.com</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="skill">
+            <tbody>
+            <tr>
+                <td>技能</td>
+            </tr>
+            <tr>
+                <td>
+                    1. 精通JavaScript、HTML、CSS，熟悉jQuery；
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    2. 擅于与设计师和产品协同工作，创建高性能，良好的用户体验界面
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    3. 熟悉HTML5、响应式框架或其他JS框架(如：Bootstrap, AngularJS)者优先
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    4. 有移动端开发经验者优先
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    5. 1-2年以上前端开发工作经验者优先
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </li>
+    <li class="work content-frame">
+        <h1>练习项目</h1>
+        <ul class="work-img">
+            <li>
+                <div class="befo"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/1.jpg" alt="">
+                <div class="afte"></div>
+            </li>
+            <li>
+                <div class="befo"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/2.jpg" alt="">
+                <div class="afte"></div>
+            </li>
+            <li>
+                <div class="befo"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/3.jpg" alt="">
+                <div class="afte"></div>
+            </li>
+            <li>
+                <div class="befo"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/4.jpg" alt="">
+                <div class="afte"></div>
+            </li>
+            <li>
+                <div class="befo"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/5.jpg" alt="">
+                <div class="afte"></div>
+            </li>
+            <li>
+                <div class="befo"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/6.jpg" alt="">
+                <div class="afte"></div>
+            </li>
         </ul>
-    </div>
+    </li>
+    <li class="another content-frame">
+        <h1>其他</h1>
+        <p>asfagagagsgdhdh</p>
+    </li>
+</ul>
+<div class="footer"></div>
 </body>
 </html>

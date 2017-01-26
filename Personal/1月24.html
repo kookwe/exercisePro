@@ -8,75 +8,104 @@
     <link rel="stylesheet" href="../persongnal2/css/bootstrap.min.css">
     <script src="../persongnal2/js/bootstrap.min.js"></script>
     <style>
+        body,div,ul,li,span,a,img{
+            padding: 0;
+            margin: 0;
+        }
+        div.header {
+            width: 100%;
+            height: 60px;
+            background: #17e7a4;
+            position: relative;
+        }
+        div.header img{
+            width: 20px;
+            height: 20px;
+            margin:20px 0 20px 14px;
+        }
+        div.header span {
+            line-height: 60px;
+            color: #fff;
+            font-size: 17px;
+        }
+        div.header a {
+            float: right;
+            line-height: 60px;
+            margin: 0 10px;
+            color: #fff;
+        }
         /*导航栏*/
         div.top-nav {
-            margin: 0;
-            padding: 0;
-            height: 71px;
+            height: 72px;
             width: 100%;
-            background: url("images/mid.png");
-            position: relative;
+            background: #ededed;
             overflow: hidden;
-            text-align: center;
-            border-bottom: 1px solid #494442;
-            border-top: 1px solid #9f918a;
+            margin-bottom: 1px;
         }
-
         div.top-nav ul {
-            padding: 0;
-            height: 72px;
+            height: 64px;
             width: 90%;
-            background: url("images/mid.png") repeat-x;
-            margin: 0 auto;
-
+            margin: 3px auto;
         }
-
-        .top-nav li {
-            text-align: center;
-            padding: 0;
+        div.top-nav li {
             list-style: none;
-            width: 202px;
-            height: 72px;
-            margin: -1px 50px 0 50px;
+            height: 64px;
+            width: 200px;
             float: left;
+            margin: 0 50px;
         }
-
-        .top-nav li a {
-            padding: 0;
-            display: block;
-            height: 72px;
-            line-height: 72px;
-            width: 193px;
-            margin-left: 4px;
-            float: left;
-            color: #101010;
-            font-size: 20px;
-            text-decoration: none;
-        }
-
-        .top-nav span.right {
-            padding: 0;
+        div.top-nav li a.button {
+            width: 200px;
+            height: 64px;
+            line-height: 64px;
             display: inline-block;
-            width: 5px;
-            height: 72px;
-            color: blue;
-        }
-
-        .top-nav li:hover,
-        .top-nav li:active {
-            background: url("images/active-l1.png") no-repeat;
-        }
-
-        .top-nav li:hover span,
-        .top-nav li:active span {
-            background: url("images/active-r1.png") no-repeat;
-        }
-
-        .top-nav li:hover a,
-        .top-nav li:active a {
-            background: url("images/active.png") repeat-x;
-            color: #b85b53;
+            zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+            /**display: inline;*/
+            outline: none;
+            text-align: center;
             text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            text-shadow: 0 1px 1px rgba(0,0,0,.3);
+            -webkit-border-radius: .5em;
+            -moz-border-radius: .5em;
+            border-radius: .5em;
+            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+            box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        }
+        div.top-nav li .fa{
+            position: relative;
+            top:5px;
+            display: inline-block;
+            height: 50px;
+        }
+        div.top-nav li a.button:hover {
+            text-decoration: none;
+        }
+        div.top-nav li a.button:active {
+            position: relative;
+            top: 1px;
+        }
+        div.top-nav li a.white {
+            color: #606060;
+            border: solid 1px #b7b7b7;
+            background: #fff;
+            background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+            background: -moz-linear-gradient(top, #fff, #ededed);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+        }
+        div.top-nav li a.white:hover {
+            background: #ededed;
+            background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+            background: -moz-linear-gradient(top, #fff, #dcdcdc);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
+        }
+        .top-nav li .white:active {
+            color: #999;
+            background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+            background: -moz-linear-gradient(top, #ededed, #fff);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
         }
 
         .content {
@@ -95,20 +124,206 @@
             width: 70%;
             height: 600px;
         }
-
+        /*主页*/
         .content li.homePage {
             color: #fff;
         }
+        .t3 {
+            position: absolute;
+            left: 48%;
+            margin-left: -175px;
+            top: 30%;
+            height: 400px;
+            width: 400px;
+            border-radius: 60px;
+            background: url("images/time.jpg") no-repeat 0 -50px;
+            /*background: #fff;
+            background-image: linear-gradient(#ffffff 40px, #ddecf2 210px, #d3e3e9);*/
+        }
 
+        .t3:before {
+            content: "";
+            position: absolute;
+            box-shadow: 0px -4px 3px 3px #b8bdca inset;
+            border-radius: 60px;
+            opacity: 0.6;
+            height: 100%;
+            width: 100%;
+            -webkit-filter: blur(1px);
+            z-index: 2;
+        }
+
+        .t3:after {
+            content: "";
+            height: 17px;
+            width: 300px;
+            position: absolute;
+            top: 97%;
+            margin-left: 25px;
+            background: #2a2a2b;
+            -webkit-filter: blur(7px); /*Chrome, Opera*/
+            z-index: -1;
+        }
+
+        .t4 {
+            position: relative;
+            top:180px;
+            left: 180px;
+            -margin: 71px;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            background-image: linear-gradient(#f9fdff, #d9eaf8);
+            box-shadow: 0px 0px 28px -8px #eaf7fb;
+            z-index: 11;
+            font-size: 20px;;
+            color: #8da6b8;
+            font-family: Arial;
+
+        }
+
+        .t4 i {
+            font-style: normal
+        }
+
+        .hour {
+            position: absolute;
+        }
+
+        .hour3 {
+            right: 30px;
+            top: 50%;
+            margin-top: -13px;
+
+        }
+
+        .hour6 {
+            left: 50%;
+            bottom: 27px;
+            margin-left: -5px;
+
+        }
+
+        .hour9 {
+            left: 30px;
+            top: 50%;
+            margin-top: -13px;
+
+        }
+
+        .hour12 {
+            left: 50%;
+            top: 30px;
+            margin-left: -10px;
+        }
+
+        .t4:before {
+            content: "";
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            box-shadow: 0px 15px 24px -5px #7a8fae;
+            z-index: 10;
+        }
+
+        .t4:after {
+            content: "";
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 4px -1px #7a8fae;
+            z-index: 9;
+
+        }
+
+        #miao, #fen, #shi {
+            position: absolute;
+            left: 50%;
+            height: 210px;
+            width: 10px;
+            margin-left: -5px;
+        }
+
+        #miao {
+            z-index: 23;
+        }
+
+        #fen {
+            z-index: 22;
+
+        }
+
+        #shi {
+            z-index: 21;
+
+        }
+        #shi:after{
+            content: "";
+            height: 60px;
+            width: 6px;
+            position: absolute;
+            top: 60px;
+            left:2px;
+            background: #1aa9d8;
+            border-radius: 8px 8px 8px 8px;
+            z-index: -1;
+        }
+        #fen:after{
+            content: "";
+            height: 65px;
+            width: 4px;
+            position: absolute;
+            top: 60px;
+            left:3px;
+            background: #23bcef;
+            border-radius: 8px 8px 8px 8px;
+            z-index: -1;
+        }
+        #miao:after{
+            content: "";
+            height: 80px;
+            width: 1px;
+            position: absolute;
+            top: 48px;
+            left:4px;
+            background: #0dc1fd;
+            z-index: -1;
+            /*box-shadow: 5px 10px 8px 3px #B2C3D4;*/
+
+        }
+
+        #point{ position: absolute; left:50%; top: 50%; width: 16px; height:16px; margin-left: -8px; margin-top: -8px; z-index: 999;    border-radius: 50%;  box-shadow: 0px 3px 8px -1px #0f4873;}
+        #point:before,#point:after{
+            content: "";
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            top:0%;
+            background: #8ba3b6;
+            border-radius: 50%;
+            z-index: 1; }
+
+        #point:before {
+            width: 16px; height:16px;
+        }
+        #point:after {
+            background: #cee3ec; left: 3px; top:3px;
+        }
         .content li.homePage h1 {
             text-align: center;
-            line-height: 300px;
+            line-height: 200px;
         }
 
         .content li.homePage p {
+            margin-left: 300px;
             text-align: center;
-            width: 80%;
-            margin: 0 auto;
+            width: 60%;
+            height: 20%;
+            -margin: 0 auto;
             font-size: 20px;
         }
 
@@ -238,23 +453,6 @@
             display: none;
         }
 
-        /*.content li.work .work-img li::before{
-            content: "";
-            width: 140px;
-            height: 240px;
-
-            background: red;
-            margin-left: -140px;
-            position: absolute;
-        }
-        .content li.work .work-img li::after{
-            content: "";
-            width: 140px;
-            height: 240px;
-            background: green;
-            margin-right: -140px;
-            position: absolute;
-        }*/
         .content li.work .work-img img {
             width: 100%;
             height: 100%;
@@ -273,41 +471,16 @@
             background: #17e7a4;
             text-align: center;
             margin: 0;
+            color:#fff;
         }
 
         .footer {
             width: 100%;
             height: 50px;
-            background: #1b2420;
+            background: /*#1b2420*/#17e7a4;
         }
 
-        div.header {
-            width: 100%;
-            height: 80px;
-            background: rgba(0, 0, 0, 0.9);
-            position: relative;
-            text-align: center;
-            border-bottom: 1px solid #e7e7e7;
-        }
 
-        div.header span {
-            display: inline-block;
-            height: 60px;
-            width: 60px;
-            line-height: 60px;
-            text-align: center;
-            color: #fff;
-            margin: 10px auto;
-            border: 2px solid;
-            border-radius: 50%;
-        }
-
-        div.header a {
-            float: right;
-            line-height: 80px;
-            margin: 0 10px;
-            color: #fff;
-        }
 
         div.background-img {
             background: url("images/IDR_THEME_NTP_BACKGROUND1.png") no-repeat;
@@ -321,7 +494,7 @@
             text-align: center;
             width:600px;
             height:440px;
-             background:url('images/bg1_03.jpg') center;
+            background:url('images/bg1_03.jpg') center;
         }
         #__01 tr{
             height: 150px;
@@ -353,8 +526,10 @@
             top: 0;
             left: 25px;
         }
+
     </style>
     <script src="js/move.js"></script>
+
     <script>
         /*问题：IE7不支持getbyclass*/
         window.onload = function () {
@@ -416,8 +591,21 @@
                     }
                 }
             }
+            var miao = document.getElementById("miao");
+            var fen = document.getElementById("fen");
+            var shi = document.getElementById("shi");
 
+            var clock = setInterval(function () {
+                var nowDate = new Date();//每次读取当前时间
+                var hour = nowDate.getHours();
+                var minute = nowDate.getMinutes();
+                var second = nowDate.getSeconds();
 
+                var circleHour = hour % 12 * 30;
+                shi.style.transform = "rotate(" + circleHour + "deg)";//读取到的时间为24小时制，转换为12小时
+                fen.style.transform = "rotate(" + minute * 6 + "deg)";
+                miao.style.transform = "rotate(" + second * 6 + "deg)";
+            }, 1000);
         }
     </script>
 
@@ -426,7 +614,8 @@
 <body>
 <div class="background-img"></div>
 <div class="header">
-    <span>ZD</span>
+    <img src="images/mobile.svg" alt="">
+    <span >17782365057</span>
     <a href="#javascript:;"><i class="fa fa-qq"></i></a>
     <a href="#javascript:;"><i class="fa fa-weixin"></i></a>
     <a href="#javascript:;"><i class="fa fa-linkedin"></i></a>
@@ -434,34 +623,39 @@
 <div class="top-nav">
     <ul>
         <li>
-            <a href="#javascript:;"><i class="fa fa-home fa-2x"></i>&nbsp;&nbsp;&nbsp;主页</a>
-            <!--<span class="tip"><i class="fa fa-home fa-4x"></i></span>-->
-            <span class="right"></span>
+            <a class="button white" href="#javascript:;"><i class="fa fa-home fa-2x"></i>&nbsp;&nbsp;&nbsp;主页</a>
         </li>
         <li>
-            <a href="#javascript:;"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;关于我</a>
-            <!--<span class="tip"></span>-->
-            <span class="right"></span>
+            <a class="button white" href="#javascript:;"> <i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;关于我</a>
         </li>
         <li>
-            <a href="#javascript:;"><i class="fa fa-image fa-2x"></i>&nbsp;&nbsp;&nbsp;作品</a>
-            <!--<span class="tip"></span>-->
-            <span class="right"></span>
+            <a class="button white" href="#javascript:;"><i class="fa fa-image fa-2x"></i>&nbsp;&nbsp;&nbsp;作品</a>
         </li>
         <li>
-            <a href="#javascript:;"><i class="fa fa-sticky-note fa-2x"></i>&nbsp;&nbsp;&nbsp;其他</a>
-            <!--<span class="tip"></span>-->
-            <span class="right"></span>
+            <a class="button white" href="#javascript:;"><i class="fa fa-sticky-note fa-2x"></i>&nbsp;&nbsp;&nbsp;其他</a>
         </li>
     </ul>
 </div>
 
 <ul class="content">
     <li style="top:0;" class="homePage content-frame">
-        <h1>FREE Responsive Template</h1>
-        <p> Outline HTML5 Template is free responsive layout by templatemo. You can download, modify and apply this
+        <h1>A race against time</h1>
+       <!-- <p> Outline HTML5 Template is free responsive layout by templatemo. You can download, modify and apply this
             layout for any of your website. Credits go to Unsplash for images.
-        </p>
+        </p>-->
+        <div class="t3">
+            <div class="t4">
+                <i class="hour hour3">3</i>
+                <i class="hour hour6">6</i>
+                <i class="hour hour9">9</i>
+                <i class="hour hour12">12</i>
+
+                <div id="miao"></div>
+                <div id="fen"></div>
+                <div id="shi"></div>
+                <div id="point"></div>
+            </div>
+        </div>
     </li>
     <li class="about-me content-frame">
         <h1>关于我</h1>
