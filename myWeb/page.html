@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="../Repertory/jquery-1.10.1.min.js"></script>
+    <link rel="stylesheet" href="../persongnal2/css/bootstrap.min.css">
+    <script src="../persongnal2/js/bootstrap.min.js"></script>
+    <!--<style>
+        body, div, ul, li, span, a, img {
+            padding: 0;
+            margin: 0;
+        }
+
+        div.header {
+            width: 100%;
+            height: 60px;
+            background: #17e7a4;
+            position: relative;
+        }
+
+        div.header img {
+            width: 20px;
+            height: 20px;
+            margin: 20px 0 20px 14px;
+        }
+
+        div.header span {
+            line-height: 60px;
+            color: #fff;
+            font-size: 17px;
+        }
+
+        div.header a {
+            float: right;
+            line-height: 60px;
+            margin: 0 10px;
+            color: #fff;
+        }
+
+        /*导航栏*/
+        div.top-nav {
+            height: 72px;
+            width: 100%;
+            background: #ededed;
+            overflow: hidden;
+            margin-bottom: 1px;
+        }
+
+        div.top-nav ul {
+            height: 64px;
+            width: 90%;
+            margin: 3px auto;
+        }
+
+        div.top-nav li {
+            list-style: none;
+            height: 64px;
+            width: 200px;
+            float: left;
+            margin: 0 50px;
+        }
+
+        div.top-nav li a.button {
+            width: 200px;
+            height: 64px;
+            line-height: 64px;
+            display: inline-block;
+            zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+            /**display: inline;*/
+            outline: none;
+            text-align: center;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+            -webkit-border-radius: .5em;
+            -moz-border-radius: .5em;
+            border-radius: .5em;
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+        }
+
+        div.top-nav li .fa {
+            position: relative;
+            top: 5px;
+            display: inline-block;
+            height: 50px;
+        }
+
+        div.top-nav li a.button:hover {
+            text-decoration: none;
+        }
+
+        div.top-nav li a.button:active {
+            position: relative;
+            top: 1px;
+        }
+
+        div.top-nav li a.white {
+            color: #606060;
+            border: solid 1px #b7b7b7;
+            background: #fff;
+            background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+            background: -moz-linear-gradient(top, #fff, #ededed);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+        }
+
+        div.top-nav li a.white:hover {
+            background: #ededed;
+            background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+            background: -moz-linear-gradient(top, #fff, #dcdcdc);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
+        }
+
+        .top-nav li .white:active {
+            color: #999;
+            background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+            background: -moz-linear-gradient(top, #ededed, #fff);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+        }
+
+        ul.content {
+            margin: 0 auto;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content li.content-frame {
+            position: absolute;
+            top: 600px;
+            left: 15%;
+            list-style: none;
+            width: 70%;
+            height: 600px;
+        }
+
+        /*主页*/
+        .content li.homePage {
+            color: #fff;
+        }
+
+        div.t3 {
+            position: absolute;
+            left: 48%;
+            margin-left: -175px;
+            top: 30%;
+            height: 400px;
+            width: 400px;
+            border-radius: 60px;
+            background: url("images/time.jpg") no-repeat 0 -50px;
+            /*background: #fff;
+            background-image: linear-gradient(#ffffff 40px, #ddecf2 210px, #d3e3e9);*/
+        }
+
+        div.t3:before {
+            content: "";
+            position: absolute;
+            box-shadow: 0px -4px 3px 3px #b8bdca inset;
+            border-radius: 60px;
+            opacity: 0.6;
+            height: 100%;
+            width: 100%;
+            -webkit-filter: blur(1px);
+            z-index: 2;
+        }
+
+        div.t3:after {
+            content: "";
+            height: 17px;
+            width: 300px;
+            position: absolute;
+            top: 97%;
+            margin-left: 25px;
+            background: #2a2a2b;
+            -webkit-filter: blur(7px); /*Chrome, Opera*/
+            z-index: -1;
+        }
+
+        div.t4 {
+            position: relative;
+            top: 180px;
+            left: 180px;
+            -margin: 71px;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            background-image: linear-gradient(#f9fdff, #d9eaf8);
+            box-shadow: 0px 0px 28px -8px #eaf7fb;
+            z-index: 11;
+            font-size: 20px;;
+            color: #8da6b8;
+            font-family: Arial;
+
+        }
+
+        div.t4 i {
+            font-style: normal
+        }
+
+        div.t4 i.hour {
+            position: absolute;
+        }
+
+        div.t4 i.hour3 {
+            right: 30px;
+            top: 50%;
+            margin-top: -13px;
+
+        }
+
+        div.t4 i.hour6 {
+            left: 50%;
+            bottom: 27px;
+            margin-left: -5px;
+
+        }
+
+        div.t4 i.hour9 {
+            left: 30px;
+            top: 50%;
+            margin-top: -13px;
+
+        }
+
+        div.t4 i.hour12 {
+            left: 50%;
+            top: 30px;
+            margin-left: -10px;
+        }
+
+        div.t4:before {
+            content: "";
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            box-shadow: 0px 15px 24px -5px #7a8fae;
+            z-index: 10;
+        }
+
+        div.t4:after {
+            content: "";
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 4px -1px #7a8fae;
+            z-index: 9;
+
+        }
+
+        #secP, #miuP, #hourP {
+            position: absolute;
+            left: 50%;
+            height: 210px;
+            width: 10px;
+            margin-left: -5px;
+        }
+
+        #secP {
+            z-index: 23;
+        }
+
+        #miuP {
+            z-index: 22;
+
+        }
+
+        #hourP {
+            z-index: 21;
+
+        }
+
+        #hourP:after {
+            content: "";
+            height: 60px;
+            width: 6px;
+            position: absolute;
+            top: 60px;
+            left: 2px;
+            background: #1aa9d8;
+            border-radius: 8px 8px 8px 8px;
+            z-index: -1;
+        }
+
+        #miuP:after {
+            content: "";
+            height: 65px;
+            width: 4px;
+            position: absolute;
+            top: 60px;
+            left: 3px;
+            background: #23bcef;
+            border-radius: 8px 8px 8px 8px;
+            z-index: -1;
+        }
+
+        #secP:after {
+            content: "";
+            height: 80px;
+            width: 1px;
+            position: absolute;
+            top: 48px;
+            left: 4px;
+            background: #0dc1fd;
+            z-index: -1;
+            /*box-shadow: 5px 10px 8px 3px #B2C3D4;*/
+
+        }
+
+        #point {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            margin-left: -8px;
+            margin-top: -8px;
+            z-index: 999;
+            border-radius: 50%;
+            box-shadow: 0px 3px 8px -1px #0f4873;
+        }
+
+        #point:before, #point:after {
+            content: "";
+            height: 10px;
+            width: 10px;
+            position: absolute;
+            top: 0;
+            background: #8ba3b6;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        #point:before {
+            width: 16px;
+            height: 16px;
+        }
+
+        #point:after {
+            background: #cee3ec;
+            left: 3px;
+            top: 3px;
+        }
+
+        ul.content li.homePage h1 {
+            text-align: center;
+            line-height: 200px;
+        }
+
+        ul.content li.homePage p {
+            margin-left: 300px;
+            text-align: center;
+            width: 60%;
+            height: 20%;
+            -margin: 0 auto;
+            font-size: 20px;
+        }
+
+        .content li.about-me {
+            height: 600px;
+            color: #fff;
+        }
+
+        .content li.about-me h1 {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            background: #17e7a4;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+        }
+
+        .content li.about-me .resum {
+            margin-top: 50px;
+            width: 40%;
+            position: relative;
+        }
+
+        .content li.about-me .resum::before {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .content li.about-me .resum td {
+            width: 50%;
+            border: 2px solid #fff;
+            line-height: 50px;
+        }
+
+        .content li.about-me .resum span {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 30px;
+            text-align: center;
+
+        }
+
+        .content li.about-me .resum .resum-content {
+            text-align: center;
+        }
+
+        .content li.about-me .skill {
+            width: 55%;
+            position: relative;
+            left: 425px;
+            top: -343px;
+            text-align: left;
+            text-indent: 50px;
+        }
+
+        .content li.about-me .skill::before {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .content li.about-me .skill td {
+            border: 2px solid #fff;
+            line-height: 50px;
+        }
+
+        .content li.work {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .content li.work h1 {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            background: #17e7a4;
+            text-align: center;
+            margin: 0;
+        }
+
+        .content li.work .work-img {
+            text-align: center;
+            width: 900px;
+            height: 80%;
+            background: green;
+            margin: 30px 25px;
+            position: absolute;
+            padding: 0;
+        }
+
+        .content li.work .work-img li {
+            list-style: none;
+            float: left;
+            width: 300px;
+            height: 50%;
+            overflow: hidden;
+            background: red;
+        }
+
+        .content li.work .work-img .bef {
+            width: 0;
+            height: 240px;
+            background: #000;
+            position: absolute;
+            opacity: 0.7;
+        }
+
+        .content li.work .work-img .bef a {
+            position: absolute;
+            left: 45%;
+            line-height: 240px;
+            display: none;
+        }
+
+        .content li.work .work-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .content li.work {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .content li.another h1 {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            width: 100%;
+            background: #17e7a4;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+        }
+
+        .footer {
+            width: 100%;
+            height: 50px;
+            background: /*#1b2420*/ #17e7a4;
+        }
+
+        div.background-img {
+            background: url("images/IDR_THEME_NTP_BACKGROUND1.png") no-repeat;
+            height: 700px;
+            width: 100%;
+            position: fixed;
+            z-index: -1;
+        }
+
+        #__01 {
+            margin-top: 50px;
+            text-align: center;
+            width: 600px;
+            height: 440px;
+            background: url('images/bg1_03.jpg') center;
+        }
+
+        #__01 tr {
+            height: 150px;
+        }
+
+        #__01 td {
+            padding: 0;
+            position: relative;
+            height: 140px;
+            width: 500px;
+            margin: 0 auto;
+
+        }
+
+        #__01 .book {
+            position: absolute;
+            top: 10px;
+            left: 75px;
+            z-index: 3;
+        }
+
+        #__01 .book img {
+            margin-right: 10px;
+            box-shadow: 2px 2px 4px #000;
+        }
+
+        #__01 .shelf {
+            padding: 0;
+            margin-top: 120px;
+            position: absolute;
+            width: 550px;
+            height: 89px;
+            top: 0;
+            left: 25px;
+        }
+
+    </style>-->
+    <script src="js/move.js"></script>
+    <script src="js/getclass.js"></script>
+    <script>
+        /*问题：IE7不支持getbyclass*/
+        window.onload = function () {
+            //var oNav = document.getElementsByClassName('top-nav')[0];
+            var oNav = get.byClass('top-nav', document)[0];
+            //var navs = oNav.getElementsByTagName('li');
+            var navs = get.byTagName('li', oNav);
+            //var oCon = document.getElementsByClassName('content')[0];
+            var oCon = get.byClass('content', document)[0];
+            //var aCons = oCon.getElementsByClassName('content-frame');
+            var aCons = get.byClass('content-frame', oCon);
+            var oldindex = 0;
+            //var oUl = document.getElementsByClassName('work-img')[0];
+            var oUl = get.byClass('work-img', document)[0];
+            //var aBef = oUl.getElementsByClassName('bef');
+            var aBef = get.byClass('bef', oUl);
+            //var aLi = oUl.getElementsByTagName('li');
+            var aLi = get.byTagName('li', oUl);
+            //var aA = oUl.getElementsByTagName('a');
+            var aA = get.byTagName('a', oUl);
+            for (var k = 0; k < aLi.length; k++) {
+                aLi[k].index = k;
+                aLi[k].onmouseover = function () {
+                    var thos = this.index;
+                    startMove(aBef[thos], 'width', 300, function () {
+                        aA[thos].style.display = 'block';
+                    });
+                }
+                aLi[k].onmouseout = function () {
+                    var thos = this.index;
+                    aA[thos].style.display = 'none';
+                    startMove(aBef[thos], 'width', 0);
+                }
+            }
+            for (var i = 0; i < navs.length; i++) {
+
+                aCons[i].name = i;
+                navs[i].index = i;
+                navs[i].onclick = function () {
+                    var that = this.index;
+                    /*一开始设置old=1，点击一次后old变为当前的index，如果下一个点击的index小于这个old，就执行
+                     *top直接变为0，如果下一个点击的index大于这个old，就startmove使得top变为0  * */
+                    if (that > oldindex) {
+                        startMove(aCons[that], 'top', 0);
+                        aCons[that].style.zIndex = '99';
+                        oldindex = that;
+                    } else if (that < oldindex) {
+                        aCons[that].style.top = '0';
+                        aCons[that].style.zIndex = '99';
+                        oldindex = that;
+                    } else {
+                        startMove(oCon, 'height', 0, function () {
+                            startMove(oCon, 'height', 608)
+                        });
+                        /*aCons[that].style.zIndex ='99';
+                         oldindex = that;*/
+                    }
+                    for (var j = 0; j < aCons.length; j++) {
+                        if (j != that) {
+                            startMove(aCons[j], 'top', 608);
+                            //aCons[j].style.top = '0';
+                        }
+                    }
+                }
+            }
+            //var miao = document.getElementById("secP");
+            var sec = get.byId('secP');
+            //var miu = document.getElementById("miuP");
+            var miu = get.byId('miuP');
+            //var shi = document.getElementById("hourP");
+            var hou = get.byId('hourP');
+            var clock = setInterval(function () {
+                var nowDate = new Date();//每次读取当前时间
+                var hour = nowDate.getHours();
+                var minute = nowDate.getMinutes();
+                var second = nowDate.getSeconds();
+
+                var circleHour = hour % 12 * 30;
+                hou.style.transform = "rotate(" + circleHour + "deg)";//读取到的时间为24小时制，转换为12小时
+                miu.style.transform = "rotate(" + minute * 6 + "deg)";
+                sec.style.transform = "rotate(" + second * 6 + "deg)";
+            }, 1000);
+        }
+    </script>
+
+</head>
+<body>
+<div class="background-img"></div>
+<div class="header">
+    <i class="fa fa-mobile fa-2x">&nbsp;17782365057</i>
+    <span></span>
+    <a href="#javascript:;"><i class="fa fa-qq"></i></a>
+    <a href="#javascript:;"><i class="fa fa-weixin"></i></a>
+    <a href="#javascript:;"><i class="fa fa-linkedin"></i></a>
+</div>
+<div class="top-nav">
+    <ul>
+        <li>
+            <a class="button white" href="#javascript:;"><i class="fa fa-home fa-2x"></i>&nbsp;&nbsp;&nbsp;主页</a>
+        </li>
+        <li>
+            <a class="button white" href="#javascript:;"> <i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;关于我</a>
+        </li>
+        <li>
+            <a class="button white" href="#javascript:;"><i class="fa fa-image fa-2x"></i>&nbsp;&nbsp;&nbsp;作品</a>
+        </li>
+        <li>
+            <a class="button white" href="#javascript:;"><i class="fa fa-sticky-note fa-2x"></i>&nbsp;&nbsp;&nbsp;其他</a>
+        </li>
+    </ul>
+</div>
+
+<ul class="content">
+    <li style="top:0;" class="homePage content-frame">
+        <h1>A race against time</h1>
+        <!-- <p> Outline HTML5 Template is free responsive layout by templatemo. You can download, modify and apply this
+             layout for any of your website. Credits go to Unsplash for images.
+         </p>-->
+        <div class="t3">
+            <div class="t4">
+                <i class="hour hour3">3</i>
+                <i class="hour hour6">6</i>
+                <i class="hour hour9">9</i>
+                <i class="hour hour12">12</i>
+
+                <div id="secP"></div>
+                <div id="miuP"></div>
+                <div id="hourP"></div>
+                <div id="point"></div>
+            </div>
+        </div>
+    </li>
+    <li class="about-me content-frame">
+        <h1>关于我</h1>
+        <table class="resume">
+            <tbody>
+            <tr>
+                <td><span class="fa fa-id-badge fa-2x"></span>姓名</td>
+                <td class="resume-content">张栋</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-genderless fa-2x"></span>性别</td>
+                <td class="resume-content">男</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-birthday-cake fa-2x"></span>出生年月</td>
+                <td class="resume-content">1992.9.25</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-universal-access fa-2x"></span>毕业院校</td>
+                <td class="resume-content">中国石油大学胜利学院</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-graduation-cap fa-2x"></span>本科专业</td>
+                <td class="resume-content">资源勘查工程</td>
+            </tr>
+            <tr>
+                <td><span class="fa fa-envelope-o fa-2x"></span>邮箱</td>
+                <td class="resume-content">w2287614885@163.com</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="skill">
+            <tbody>
+            <tr>
+                <td>技能</td>
+            </tr>
+            <tr>
+                <td>
+                    1. 掌握必要的基础知识，熟悉JavaScript、HTML、CSS，jQuery；
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    2. 擅于与设计师和产品协同工作，创建高性能，良好的用户体验界面
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    3. 熟悉HTML5、响应式框架或其他JS框架(如：Bootstrap, AngularJS)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    4.具有良好的沟通与表达能力，思路清晰，有强烈的责任心和创新意识，业务逻辑理解与分析能力强。
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </li>
+    <li class="work content-frame">
+        <h1>练习项目</h1>
+        <ul class="work-img">
+            <li>
+                <div class="bef"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/1.jpg" alt="">
+                <div class="afte"></div>
+            </li>
+            <li>
+                <div class="bef"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/2.jpg" alt="">
+
+            </li>
+            <li>
+                <div class="bef"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/3.jpg" alt="">
+            </li>
+            <li>
+                <div class="bef"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/4.jpg" alt="">
+            </li>
+            <li>
+                <div class="bef"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/5.jpg" alt="">
+            </li>
+            <li>
+                <div class="bef"><a href="#javascript:;"><span class="fa fa-link fa-3x"></span></a></div>
+                <img src="images/6.jpg" alt="">
+            </li>
+        </ul>
+    </li>
+    <li class="another content-frame">
+        <h1>其他</h1>
+        <table id="bookshelf">
+            <tr>
+                <td>
+                    <div class="book">
+                        <h6>已阅读</h6>
+                        <img src="images/css.jpg" height="130" width="100"/>
+                        <img src="images/cssPro.jpg" height="130" width="100"/>
+                        <img src="images/jsDom.jpg" height="130" width="100"/>
+                        <img src="images/jsPro.jpg" height="130" width="100"/>
+                    </div>
+
+                    <img class="shelf" src="images/shelf_03.jpg">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="book">
+                        <h6>待加入</h6>
+                        <img src="images/cry.jpg" height="130" width="100"/>
+                        <img src="images/cry.jpg" height="130" width="100"/>
+                        <img src="images/cry.jpg" height="130" width="100"/>
+                        <img src="images/cry.jpg" height="130" width="100"/>
+                    </div>
+
+                    <img class="shelf" src="images/shelf_03.jpg">
+                </td>
+            </tr>
+        </table>
+    </li>
+</ul>
+<div class="footer"></div>
+</body>
+</html>
